@@ -5,31 +5,10 @@
 @section('content')
     <div class="container mx-auto mt-10">
 
-        <!-- Menu Navigasi -->
-        <div class="flex justify-between gap-2">
-            <div class="flex gap-2">
-                <a href="{{ route('admin.dashboard') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Dashboard
-                    </button>
-                </a>
-                <a href="{{ route('admin.products.create') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Produk
-                    </button>
-                </a>
-                <a href="{{ route('admin.category.create') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Kategori
-                    </button>
-                </a>
-            </div>
-        </div>
-
         <!-- Modal untuk Input Kategori -->
-        <div id="kategoriModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden overflow-y-auto">
-            <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
-                <h2 class="text-2xl font-bold mb-4">Tambah Kategori Baru</h2>
+        <div id="kategoriModal" class="fixed h-screen inset-0 flex items-center w-screen justify-center bg-gray-800 bg-opacity-50 hidden overflow-y-auto">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-6xl p-6 ">
+                <h2 class="text-2xl font-medium mb-4">Tambah Kategori Baru</h2>
 
                 @if ($errors->any())
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -43,31 +22,36 @@
 
                 <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-700 font-bold mb-2">Nama Kategori:</label>
-                        <input type="text" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan nama kategori" required>
+                    <div class="grid grid-cols-2 gap-x-6">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 text-base font-normal mb-2">Nama Kategori:</label>
+                            <input type="text" name="name" id="name" class="text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan nama kategori" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="image" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
+                            <input type="file" name="image" id="image" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" accept="image/*" required>
+                        </div>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="description" class="block text-gray-700 font-bold mb-2">Deskripsi Kategori:</label>
-                        <textarea name="description" id="description" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-                    </div>
+                    <div class="grid grid-cols-2 gap-x-6">
+                        <div class="mb-4">
+                            <label for="description" class="block text-gray-700 font-normal mb-2 text-base">Deskripsi Kategori:</label>
+                            <textarea name="description" id="description" rows="10" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                        </div>
 
-                    <div class="mb-4">
-                        <label for="excellence" class="block text-gray-700 font-bold mb-2">Keunggulan Kategori:</label>
-                        <textarea name="excellence" id="excellence" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                        <div class="mb-4">
+                            <label for="excellence" class="block text-gray-700 font-normal mb-2 text-base">Keunggulan Kategori:</label>
+                            <textarea name="excellence" id="excellence" rows="10" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                        </div>
                     </div>
+                    
 
-                    <div class="mb-4">
-                        <label for="image" class="block text-gray-700 font-bold mb-2">Gambar Sampul:</label>
-                        <input type="file" name="image" id="image" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" accept="image/*" required>
-                    </div>
-
-                    <div class="flex justify-between">
-                        <button type="button" onclick="closeModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                    <div class="flex justify-end gap-3">
+                        <button type="button" onclick="closeModal()" class="bg-red-500 hover:bg-red-700 text-white text-base font-normal py-2 px-4 rounded">
                             Batal
                         </button>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-base text-white font-normal py-2 px-4 rounded">
                             Tambah Kategori
                         </button>
                     </div>
@@ -84,41 +68,45 @@
                 </div>
 
                 <!-- Modal Content -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full p-6">
-                    <h2 class="text-2xl font-bold mb-4">Edit Kategori</h2>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition-all w-full max-w-6xl p-6">
+                    <h2 class="text-2xl text-start font-medium mb-4">Edit Kategori</h2>
                     <form id="editCategoryForm" action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
-                        <!-- Nama Kategori -->
-                        <div class="mb-4">
-                            <label for="editName" class="block text-gray-700 font-bold mb-2">Nama Kategori:</label>
-                            <input type="text" name="name" id="editName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <div class="grid grid-cols-2 gap-x-6">
+                            <!-- Nama Kategori -->
+                            <div class="mb-4 text-start">
+                                <label for="editName" class="block text-gray-700 text-base font-normal mb-2">Nama Kategori:</label>
+                                <input type="text" name="name" id="editName" class="text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            </div>
+
+                            <!-- Gambar Sampul -->
+                            <div class="mb-4 text-start	">
+                                <label for="editImage" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
+                                <input type="file" name="image" id="editImage" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            </div>
                         </div>
 
-                        <!-- Deskripsi Kategori -->
-                        <div class="mb-4">
-                            <label for="editDescription" class="block text-gray-700 font-bold mb-2">Deskripsi Kategori:</label>
-                            <textarea name="description" id="editDescription" class="description_editor shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                        <div class="grid grid-cols-2 gap-x-6">
+                            <!-- Deskripsi Kategori -->
+                            <div class="mb-4 text-start	">
+                                <label for="editDescription" class="block text-gray-700 text-base font-normal mb-2">Deskripsi Kategori:</label>
+                                <textarea name="description" id="editDescription" class="description_editor text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                            </div>
+
+                            <!-- Keunggulan Kategori -->
+                            <div class="mb-4 text-start">
+                                <label for="editExcellence" class="block text-gray-700 text-base font-normal mb-2">Keunggulan Kategori:</label>
+                                <textarea name="excellence" id="editExcellence" class="excellence_editor text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                            </div>
                         </div>
 
-                        <!-- Keunggulan Kategori -->
-                        <div class="mb-4">
-                            <label for="editExcellence" class="block text-gray-700 font-bold mb-2">Keunggulan Kategori:</label>
-                            <textarea name="excellence" id="editExcellence" class="excellence_editor shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-                        </div>
-
-                        <!-- Gambar Sampul -->
-                        <div class="mb-4">
-                            <label for="editImage" class="block text-gray-700 font-bold mb-2">Gambar Sampul:</label>
-                            <input type="file" name="image" id="editImage" class="block w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 cursor-pointer focus:outline-none">
-                        </div>
-
-                        <div class="flex justify-end">
-                            <button type="button" onclick="closeEditModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">
+                        <div class="flex justify-end gap-3">
+                            <button type="button" onclick="closeEditModal()" class="bg-red-500 hover:bg-red-700 text-white text-base font-normal py-2 px-4 rounded">
                                 Batal
                             </button>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-base text-white font-normal py-2 px-4 rounded">
                                 Simpan
                             </button>
                         </div>
@@ -130,14 +118,14 @@
 
         <!-- Daftar Kategori -->
         <div class="mt-10">
-            <div class="flex justify-between">
-                <h2 class="text-2xl font-bold mb-4">Daftar Kategori</h2>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-medium">Daftar Kategori</h2>
                 <!-- Button Tambah Kategori -->
-                 <div class="flex">
-                    <form action="{{ route('admin.category.create') }}" method="GET" class="flex items-center gap-2 mb-4">
-                        <input type="text" id="searchInput" placeholder="Cari Kategori..." class="px-4 py-2 border rounded-md">
+                 <div class="flex gap-4">
+                    <form action="{{ route('admin.category.create') }}" method="GET" class="flex items-center gap-2">
+                        <input type="text" id="searchInput" placeholder="Cari Kategori..." class="text-sm px-4 py-2 border rounded-md">
                     </form>
-                    <button onclick="openModal()" class="bg-blue-500 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
+                    <button onclick="openModal()" class="bg-blue-500 text-sm text-white px-3 py-2 rounded-md flex items-center gap-1">
                         Tambah Kategori <iconify-icon icon="octicon:plus-16"></iconify-icon>
                     </button>
                  </div>
@@ -145,37 +133,39 @@
             <table class="min-w-full bg-white border border-gray-300 rounded-md">
                 <thead>
                     <tr>
-                        <th class="px-2 w-12 py-4 text-center border-b">No</th>
-                        <th class="px-4 w-28 py-4 text-left border-b">Sampul Kategori</th>
-                        <th class="px-4 w-52 py-4 text-left border-b">Nama Kategori</th>
-                        <th class="px-4 w-80 py-4 text-left border-b">Deskripsi Kategori</th>
-                        <th class="px-4 w-80 py-4 text-left border-b">Keunggulan Kategori</th>
-                        <th class="px-4 py-4 text-center border-b">Aksi</th>
+                        <th class="px-2 w-16 py-4 text-center border text-base font-medium">No</th>
+                        <th class="px-4 w-52 py-4 text-left border text-base font-medium">Cover Kategori</th>
+                        <th class="px-4 w-64 py-4 text-left border text-base font-medium">Nama Kategori</th>
+                        <th class="px-4 w-80 py-4 text-left border text-base font-medium">Deskripsi Kategori</th>
+                        <th class="px-4 w-80 py-4 text-left border text-base font-medium">Keunggulan Kategori</th>
+                        <th class="px-4 w-24 py-4 text-center border text-base font-medium">Aksi</th>
                     </tr>
                 </thead>
                 <tbody  id="categoryTableBody">
                     @forelse ($categories as $index => $category)
                         <tr class="border-b border-gray-300">
-                            <td class="px-2 max-w-0 py-2 text-center border">{{ $index + 1 }}</td>
+                            <td class="px-2 max-w-0 py-2 text-center border text-sm">{{ $index + 1 }}</td>
                             <td class="px-4 py-2">
                                 <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="w-100 h-20 object-cover rounded">
                             </td>
-                            <td class="px-4 py-2 border">{{ $category->name }}</td>
-                            <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto">{!! $category->description !!}</div></td>
-                            <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto">{!! $category->excellence !!}</div></td>
-                            <td class="px-4 py-2 text-center border">
-                                <button onclick="openEditModal({{ $category->id }})" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
-                                    Edit
-                                </button>
-
-                                <!-- Form untuk delete -->
-                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                        Hapus
+                            <td class="px-4 py-2 border text-sm">{{ $category->name }}</td>
+                            <td class="py-2 px-4 border text-sm"><div class="h-16 overflow-y-auto scrollbar-none">{!! $category->description !!}</div></td>
+                            <td class="py-2 px-4 border text-sm"><div class="h-16 overflow-y-auto scrollbar-none">{!! $category->excellence !!}</div></td>
+                            <td class="px-4 py-2 text-center border-0">
+                                <div class="flex justify-center gap-3 items-center">
+                                    <button onclick="openEditModal({{ $category->id }})" class="bg-yellow-500 font-normal hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded">
+                                        Edit
                                     </button>
-                                </form>
+
+                                    <!-- Form untuk delete -->
+                                    <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="font-normal bg-red-500 hover:bg-red-700 text-white text-sm font-bold py-2 px-4 rounded">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @empty
@@ -188,38 +178,50 @@
         </div>
     </div>
 
-    <script>
-        tinymce.init({
-            selector: '#description',  // Target textarea dengan ID "description"
-            plugins: 'lists link image code',
-            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
-        });
-        tinymce.init({
-            selector: '#excellence',  // Target textarea dengan ID "description"
-            plugins: 'lists link image code',
-            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
-        });
-    </script>
-
-    <!-- JavaScript untuk membuka dan menutup modal -->
+    <!-- JavaScript untuk membuka dan menutup modal tambah kategori -->
     <script>
         function openModal() {
-            document.getElementById('kategoriModal').classList.remove('hidden');
+            const modal = document.getElementById('kategoriModal');
+            
+            // Tampilkan modal
+            modal.classList.remove('hidden');
+
+            // Inisialisasi ulang TinyMCE setelah modal dibuka, jika belum ada editor aktif
+            if (!tinymce.get('description') || !tinymce.get('excellence')) {
+                tinymce.init({
+                    selector: '#description',  // Target textarea dengan ID "description"
+                    plugins: 'lists link image code',
+                    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
+                });
+                tinymce.init({
+                    selector: '#excellence',  // Target textarea dengan ID "excellence"
+                    plugins: 'lists link image code',
+                    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
+                });
+            }
         }
 
         function closeModal() {
-            document.getElementById('kategoriModal').classList.add('hidden');
+            const modal = document.getElementById('kategoriModal');
+
+            // Sembunyikan modal
+            modal.classList.add('hidden');
+
+            // Hapus TinyMCE untuk memastikan tidak ada duplikasi
+            tinymce.remove('#description');
+            tinymce.remove('#excellence');
         }
     </script>
 
+
     <!-- Edit Button -->
+    <!-- Script untuk modal edit kategori -->
     <script>
         function openEditModal(categoryId) {
-            // Ambil elemen modal dan form
             const modal = document.getElementById('editModal');
             const form = document.getElementById('editCategoryForm');
 
-            // Ambil data kategori berdasarkan ID (misalnya dengan API atau langsung dari backend)
+            // Ambil data kategori berdasarkan ID
             fetch(`/admin/category/${categoryId}/edit`)
                 .then(response => response.json())
                 .then(data => {
@@ -231,18 +233,25 @@
                     // Set action form untuk update kategori
                     form.action = `/admin/category/${categoryId}`;
 
-                    // Tampilkan modal
+                    // Tampilkan modal edit
                     modal.classList.remove('hidden');
 
+                    // Hapus editor TinyMCE sebelumnya jika ada
+                    if (tinymce.get('editDescription')) {
+                        tinymce.remove('#editDescription');
+                    }
+                    if (tinymce.get('editExcellence')) {
+                        tinymce.remove('#editExcellence');
+                    }
+
                     // Inisialisasi ulang TinyMCE setelah modal dibuka
-                    tinymce.remove();  // Hapus semua editor TinyMCE yang ada sebelumnya
                     tinymce.init({
-                        selector: '.description_editor',
+                        selector: '#editDescription',
                         plugins: 'lists link image code',
                         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
                     });
                     tinymce.init({
-                        selector: '.excellence_editor',
+                        selector: '#editExcellence',
                         plugins: 'lists link image code',
                         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code'
                     });
@@ -252,11 +261,16 @@
 
         function closeEditModal() {
             const modal = document.getElementById('editModal');
-            modal.classList.add('hidden');
-            tinymce.remove();  // Hapus editor TinyMCE saat modal ditutup
-        }
 
+            // Sembunyikan modal edit
+            modal.classList.add('hidden');
+
+            // Hapus editor TinyMCE saat modal ditutup
+            tinymce.remove('#editDescription');
+            tinymce.remove('#editExcellence');
+        }
     </script>
+
 
 <script>
     document.getElementById('searchInput').addEventListener('keyup', function() {
@@ -279,8 +293,8 @@
                                     <img src="/storage/${category.image}" alt="${category.name}" class="w-100 h-20 object-cover rounded">
                                 </td>
                                 <td class="px-4 py-2 border">${category.name}</td>
-                                <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto">${category.description}</div></td>
-                                <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto">${category.excellence}</div></td>
+                                <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto scrollbar-none">${category.description}</div></td>
+                                <td class="py-2 px-4 border"><div class="h-16 overflow-y-auto scrollbar-none">${category.excellence}</div></td>
                                 <td class="px-4 py-2 text-center border">
                                     <button onclick="openEditModal(${category.id})" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
                                         Edit

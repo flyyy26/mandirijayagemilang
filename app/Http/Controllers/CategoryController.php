@@ -77,8 +77,8 @@ class CategoryController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'excellence' => 'required',
+            'description' => 'nullable|string',
+            'excellence' => 'nullable|string',
             'image' => 'nullable|image',
         ]);
 

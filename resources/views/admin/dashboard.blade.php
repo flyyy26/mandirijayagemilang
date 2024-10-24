@@ -19,26 +19,6 @@
 
 @section('content')
     <div class="container p-5 mx-auto">
-        <!-- Menu Navigasi -->
-        <div class="flex justify-between gap-2">
-            <div class="flex gap-2">
-                <a href="{{ route('admin.dashboard') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Dashboard
-                    </button>
-                </a>
-                <a href="{{ route('admin.products.create') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Produk
-                    </button>
-                </a>
-                <a href="{{ route('admin.category.create') }}">
-                    <button class="bg-green-400 text-white px-4 py-2 rounded-md mb-4 flex items-center gap-1">
-                        Kategori
-                    </button>
-                </a>
-            </div>
-        </div>
 
         <h1 class="text-3xl font-bold mt-10">Welcome to the Admin Dashboard</h1>
         <p class="mt-4">Hello, {{ Auth::user()->name }}!</p>
