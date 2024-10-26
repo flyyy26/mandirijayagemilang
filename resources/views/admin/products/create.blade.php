@@ -33,8 +33,11 @@
                         <!-- Upload Gambar Produk -->
                         <div class="mb-4">
                             <label for="image" class="block text-gray-700 text-base font-normal mb-2">Gambar Produk</label>
-                            <input type="file" name="image" id="image" class="w-full px-4 py-2 border rounded-md">
+                            <input type="file" name="image" id="image" class="w-full px-4 py-2 border rounded-md" onchange="checkFileSize(this, 'image-error')">
+                            
+                            <span id="image-error" class="text-red-500 text-sm hidden"></span> <!-- Error message span -->
                         </div>
+
                     </div>
                     
 
@@ -63,13 +66,25 @@
                         </div>
                     </div>
 
+                    <!-- Pilih Nomor WhatsApp -->
+                    <div class="mb-4">
+                        <label for="whatsapp_id" class="block text-gray-700 text-base font-normal mb-2">Nomor WhatsApp</label>
+                        <select name="whatsapp_id" id="whatsapp_id" class="w-full px-4 py-2 border rounded-md" required>
+                            <option value="" disabled selected>Pilih Nomor WhatsApp</option>
+                            @foreach($whatsapps as $whatsapp)
+                                <option value="{{ $whatsapp->id }}">{{ $whatsapp->distributor }} - {{ $whatsapp->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
                     <!-- Submit Button -->
                     <div class="flex justify-end gap-3">
                         <button type="button" onclick="closeModal()" class="bg-red-500 hover:bg-red-700 text-white text-base font-normal py-2 px-4 rounded">
                             Batal
                         </button>
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-base text-white font-normal py-2 px-4 rounded">
-                            Tambah Kategori
+                            Tambah Produk
                         </button>
                     </div>
                 </form>
@@ -94,8 +109,9 @@
                     <th class="px-4 w-48 py-4 text-left border text-base font-medium">Gambar Produk</th>
                     <th class="px-4 w-52 py-2 text-center border text-base font-medium">Nama Produk</th>
                     <th class="px-4 py-2 w-48 text-center border text-base font-medium">Harga</th>
-                    <th class="px-4 py-2 w-55 py-4 text-left border text-base font-medium">Deskripsi</th>
+                    <th class="px-4 py-2 w-55 py-4 text-center border text-base font-medium">Deskripsi</th>
                     <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Kategori</th>
+                    <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Nomor Whatsapp</th>
                     <th class="px-4 py-2 w-48 py-4 text-center border text-base font-medium">Aksi</th>
                 </tr>
             </thead>
@@ -110,9 +126,10 @@
                         <td class="px-4 py-2 border text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                         <td class="px-4 py-2 border text-center"><div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div></td>
                         <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
+                        <td class="px-4 py-2 border text-center">+{{ $product->whatsapp->name }}</td>
                         <td class="px-4 py-2 border text-center border-0">
                             <div class="flex justify-center gap-3 items-center">
-                                <button onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }}, '{{ $product->description }}', {{ $product->category_id }})" class="bg-yellow-500 font-normal hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded">
+                                <button onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }}, '{{ $product->description }}', {{ $product->category_id }}, {{ $product->whatsapp_id }})" class="bg-yellow-500 font-normal hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded">
                                     Edit
                                 </button>
 
@@ -156,7 +173,9 @@
                          <!-- Gambar Sampul -->
                         <div class="mb-4 text-start">
                             <label for="editImage" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
-                            <input type="file" name="image" id="editImage" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <input type="file" name="image" id="editImage" onchange="checkFileSize(this, 'image-error2')" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+                            <span  id="image-error2" class="text-red-500 text-sm hidden"></span>
                         </div>
                     </div>
 
@@ -181,6 +200,14 @@
                         </div>
                     </div>
 
+                    <!-- Edit Nomor WhatsApp -->
+                    <div class="mb-4 text-start">
+                        <label for="editProductWhatsapp" class="block text-gray-700 text-base font-normal mb-2">Nomor Whatsapp:</label>
+                        <select name="whatsapp_id" id="editProductWhatsapp" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <!-- Nanti akan diisi dengan data kategori dari JavaScript -->
+                        </select>
+                    </div>
+
                     <div class="flex justify-end gap-3">
                         <button type="button" onclick="closeEditModal()" class="bg-red-500 hover:bg-red-700 text-white text-base font-normal py-2 px-4 rounded">
                             Batal
@@ -193,6 +220,27 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        function checkFileSize(input, errorId) {
+            const file = input.files[0];
+            const errorElement = document.getElementById(errorId);
+            
+            if (file) {
+                const maxSize = 1024 * 1024; // 1 MB in bytes
+                
+                if (file.size > maxSize) {
+                    errorElement.textContent = 'Maksimal gambar 1mb'; // Set error message
+                    errorElement.classList.remove('hidden'); // Show error message
+                    input.value = ''; // Clear the input
+                } else {
+                    errorElement.textContent = ''; // Clear any previous error message
+                    errorElement.classList.add('hidden'); // Hide error message
+                }
+            }
+        }
+    </script>
 
     <script>
         document.getElementById('searchInput').addEventListener('keyup', function() {
@@ -256,7 +304,7 @@
         }
     </script>
      <script>
-        function openEditModal(id, name, price, description, categoryId) {
+        function openEditModal(id, name, price, description, categoryId, whatsappId) {
             const modal = document.getElementById('editModal');
             document.getElementById('editProductName').value = name;
             document.getElementById('editProductPrice').value = price;
@@ -280,8 +328,23 @@
                     });
                 });
 
+            // Ambil data WhatsApp dari server dan isi dropdown
+            fetch('/admin/whatsapps') // Pastikan route ini mengembalikan daftar WhatsApp
+                .then(response => response.json())
+                .then(data => {
+                    const whatsappSelect = document.getElementById('editProductWhatsapp');
+                    whatsappSelect.innerHTML = ''; // Kosongkan opsi WhatsApp sebelumnya
+
+                    // Tambahkan opsi WhatsApp ke dropdown
+                    data.forEach(whatsapp => {
+                        const selectedWhatsapp = whatsapp.id === whatsappId ? 'selected' : ''; // Tentukan WhatsApp yang dipilih
+                        whatsappSelect.innerHTML += `<option value="${whatsapp.id}" ${selectedWhatsapp}>${whatsapp.distributor} - ${whatsapp.name}</option>`;
+                    });
+                });
+
             modal.classList.remove('hidden');
         }
+
 
 
         function closeEditModal() {

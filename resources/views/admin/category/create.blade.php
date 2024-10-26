@@ -30,7 +30,8 @@
 
                         <div class="mb-4">
                             <label for="image" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
-                            <input type="file" name="image" id="image" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" accept="image/*" required>
+                            <input type="file" name="image" id="image" onchange="checkFileSize(this, 'image-error')" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" accept="image/*" required>
+                            <span id="image-error" class="text-red-500 text-sm hidden"></span>
                         </div>
                     </div>
 
@@ -84,7 +85,8 @@
                             <!-- Gambar Sampul -->
                             <div class="mb-4 text-start	">
                                 <label for="editImage" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
-                                <input type="file" name="image" id="editImage" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <input type="file" name="image" id="editImage" onchange="checkFileSize(this, 'image-error2')" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <span id="image-error2" class="text-red-500 text-sm hidden"></span>
                             </div>
                         </div>
 
@@ -107,7 +109,7 @@
                                 Batal
                             </button>
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-base text-white font-normal py-2 px-4 rounded">
-                                Simpan
+                                Simpan Perubahan
                             </button>
                         </div>
                     </form>
@@ -178,6 +180,26 @@
         </div>
     </div>
 
+
+    <script>
+        function checkFileSize(input, errorId) {
+            const file = input.files[0];
+            const errorElement = document.getElementById(errorId);
+            
+            if (file) {
+                const maxSize = 1024 * 1024; // 1 MB in bytes
+                
+                if (file.size > maxSize) {
+                    errorElement.textContent = 'Maksimal gambar 1mb'; // Set error message
+                    errorElement.classList.remove('hidden'); // Show error message
+                    input.value = ''; // Clear the input
+                } else {
+                    errorElement.textContent = ''; // Clear any previous error message
+                    errorElement.classList.add('hidden'); // Hide error message
+                }
+            }
+        }
+    </script>
     <!-- JavaScript untuk membuka dan menutup modal tambah kategori -->
     <script>
         function openModal() {

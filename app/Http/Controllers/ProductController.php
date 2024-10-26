@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Whatsapp;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,9 +12,10 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all(); // Ambil semua kategori untuk form
+        $whatsapps = Whatsapp::all();
         $products = Product::with('category')->get(); // Ambil semua produk untuk ditampilkan di tabel
 
-        return view('admin.products.create', compact('categories', 'products'));
+        return view('admin.products.create', compact('categories', 'products', 'whatsapps'));
     }
 
 
@@ -25,8 +27,12 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id', // Validasi foreign key kategori
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'whatsapp_id' => 'required|exists:whatsapps,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024', // 1024 KB = 1 MB
+        ], [
+            'image.max' => 'Maksimal gambar 1mb', // Custom error message
         ]);
+        
 
         // Proses upload gambar produk
         if ($request->hasFile('image')) {
@@ -41,6 +47,7 @@ class ProductController extends Controller
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'category_id' => $request->input('category_id'),
+            'whatsapp_id' => $request->input('whatsapp_id'),
             'image' => $imagePath,
         ]);
 
@@ -55,14 +62,16 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'description' => 'nullable|string',
             'image' => 'nullable|image',
-            'category_id' => 'required|exists:categories,id' // Validasi kategori
+            'category_id' => 'required|exists:categories,id', 
+            'whatsapp_id' => 'required|exists:whatsapps,id' // Validasi kategori
         ]);
 
         $product = Product::findOrFail($id);
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->category_id = $request->category_id; // Simpan kategori
+        $product->category_id = $request->category_id;
+        $product->whatsapp_id = $request->whatsapp_id; // Simpan kategori
 
         // Update gambar jika di-upload
         if ($request->hasFile('image')) {

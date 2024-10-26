@@ -13,7 +13,10 @@
         <div class="logo_header">
             <img src="images/logo_bintang.png" alt="">
         </div>
-        <div class="menu_header">
+        <button id="menuToggleButton" class="hamburger" onclick="popupMenuMobile()">
+            <iconify-icon id="menuIcon" icon="radix-icons:hamburger-menu"></iconify-icon>
+        </button>
+        <div class="menu_header" id="menuMobilePopup">
             <ul>
                 <li><a href="#">Beranda</a></li>
                 <li><a href="#">Produk</a></li>
@@ -43,7 +46,7 @@
             <div class="swiper-button-prev"></div>
         </div>
         <img src="images/section_1_img.png" alt="Bintang Plafon PVC Group" class="section_1_img">
-        <div class="section_1_layanan">
+        <!-- <div class="section_1_layanan">
             <span>Saya Ingin :</span>
             <form action="">
                 <div class="select_layout">
@@ -56,7 +59,7 @@
                 </div>
                 <button>Cari Layanan</button>
             </form>
-        </div>
+        </div> -->
     </div>
     <div class="section_2">
         <div class="section_2_content">
@@ -327,11 +330,13 @@
                     <iconify-icon icon="bxs:category-alt"></iconify-icon>
                     <h2>Kategori Produk</h2>
                 </div>
-                <div class="tab">
-                    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Plafon Pvc</button>
-                    <button class="tablinks" onclick="openCity(event, 'Paris')">List Pvc</button>
-                    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Ornamen Pvc</button>
-                    <button class="tablinks" onclick="openCity(event, 'Jakarta')">Fitting Ornamen Pvc</button>
+                <div class="tab_container">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Plafon Pvc</button>
+                        <button class="tablinks" onclick="openCity(event, 'Paris')">List Pvc</button>
+                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Ornamen Pvc</button>
+                        <button class="tablinks" onclick="openCity(event, 'Jakarta')">Fitting Ornamen Pvc</button>
+                    </div>
                 </div>
             </div>
             <div class="tab_layout">
@@ -975,6 +980,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        function popupMenuMobile() {
+            const popupMenuMobileVar = document.getElementById("menuMobilePopup");
+            const menuIcon = document.getElementById("menuIcon");
+            
+            // Toggle kelas active-menuMobilePopup
+            popupMenuMobileVar.classList.toggle("active-menuMobilePopup");
+            
+            // Ubah ikon berdasarkan kondisi active-menuMobilePopup
+            if (popupMenuMobileVar.classList.contains("active-menuMobilePopup")) {
+                menuIcon.setAttribute("icon", "radix-icons:cross-1"); // Ikon close
+            } else {
+                menuIcon.setAttribute("icon", "radix-icons:hamburger-menu"); // Ikon hamburger
+            }
+        }
+    </script>
+    <script>
         function openCity(evt, cityName) {
             var i, tabcontent, tabCatalogContent, tablinks;
 
@@ -1029,5 +1050,6 @@
         },
         });
     </script>
+    
 </body>
 </html>

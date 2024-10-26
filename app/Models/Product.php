@@ -10,11 +10,15 @@ class Product extends Model
     use HasFactory;
 
     // Kolom yang bisa diisi melalui mass assignment
-    protected $fillable = ['name', 'description', 'price', 'category_id', 'image'];
+    protected $fillable = ['name', 'description', 'price', 'category_id', 'whatsapp_id', 'image'];
 
     // Relasi ke kategori (many-to-one)
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function whatsapp()
+    {
+        return $this->belongsTo(Whatsapp::class);
     }
 }

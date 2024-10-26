@@ -31,7 +31,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'excellence' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk gambar
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1048', // Validasi untuk gambar
         ]);
 
         // Upload gambar

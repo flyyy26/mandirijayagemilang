@@ -24,18 +24,15 @@ Route::post('/admin-login', [AdminController::class, 'login']);
 Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    // Tambahkan route untuk halaman produk
     Route::get('/admin/products', function () {
-        return view('admin.products'); // Anda akan membuat view ini
+        return view('admin.products'); // You will create this view later
     })->name('admin.products');
 
-    // Tambahkan route logout di sini juga
     Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
+
 
 use App\Http\Controllers\CategoryController;
 
@@ -59,3 +56,20 @@ use App\Http\Controllers\ProductController;
     Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
     Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
 
+use App\Http\Controllers\WhatsappController;
+// Route untuk halaman input kategori
+    Route::get('/admin/whatsapp/create', [WhatsappController::class, 'create'])->name('admin.whatsapp.create');
+    Route::post('/admin/whatsapp', [WhatsappController::class, 'store'])->name('admin.whatsapp.store');
+    Route::delete('/admin/whatsapp/{id}', [WhatsappController::class, 'destroy'])->name('admin.whatsapp.destroy');
+    Route::get('/admin/whatsapp/{id}/edit', [WhatsappController::class, 'edit'])->name('admin.whatsapp.edit');
+    Route::put('/admin/whatsapp/{id}', [WhatsappController::class, 'update'])->name('admin.whatsapp.update');
+    Route::get('/admin/whatsapps/search', [WhatsappController::class, 'search'])->name('admin.whatsapp.search');
+    Route::get('/admin/whatsapps', [WhatsappController::class, 'index'])->name('admin.whatsapp.index');
+
+use App\Http\Controllers\HotlineController;
+    Route::get('/admin/hotline/create', [HotlineController::class, 'create'])->name('admin.hotline.create');
+    Route::post('/admin/hotline/store', [HotlineController::class, 'store'])->name('admin.hotline.store');
+    Route::get('/admin/hotlines', [HotlineController::class, 'index'])->name('admin.hotline.index');
+    Route::delete('/admin/hotline/{id}', [HotlineController::class, 'destroy'])->name('admin.hotline.destroy');
+    Route::get('/admin/hotline/{id}/edit', [HotlineController::class, 'edit'])->name('admin.hotline.edit');
+    Route::put('/admin/hotline/{id}', [HotlineController::class, 'update'])->name('admin.hotline.update');

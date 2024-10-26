@@ -56,14 +56,15 @@
                 <a href="{{ route('admin.category.create') }}" class="{{ Route::currentRouteName() == 'admin.category.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Kategori</a>
                 
                 <!-- Menu Nomor Whatsapp -->
-                <a href="#" class="{{ Route::currentRouteName() == 'admin.whatsapp' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Nomor Whatsapp</a>
+                <a href="{{ route('admin.whatsapp.create') }}" class="{{ Route::currentRouteName() == 'admin.whatsapp' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Nomor Whatsapp</a>
             </div>
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
         <!-- Profile dropdown -->
-        <div class="relative ml-3">
+        <div class="relative flex items-center ml-3 gap-6">
+          <p class="text-sm text-white">Hello, {{ Auth::user()->name }}!</p>
           <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 bg-red-700 hover:text-white flex items-center gap-2">Keluar Dashboard <iconify-icon icon="ri:logout-box-r-fill"></iconify-icon></a>
         </div>
       </div>
