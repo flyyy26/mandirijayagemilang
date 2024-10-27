@@ -126,7 +126,9 @@
                         <td class="px-4 py-2 border text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                         <td class="px-4 py-2 border text-center"><div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div></td>
                         <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
-                        <td class="px-4 py-2 border text-center">+{{ $product->whatsapp->name }}</td>
+                        <td class="px-4 py-2 border text-center">
+                            {{ $product->whatsapp ? '+' . $product->whatsapp->name : '' }}
+                        </td>
                         <td class="px-4 py-2 border text-center border-0">
                             <div class="flex justify-center gap-3 items-center">
                                 <button onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }}, '{{ $product->description }}', {{ $product->category_id }}, {{ $product->whatsapp_id }})" class="bg-yellow-500 font-normal hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded">

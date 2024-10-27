@@ -5,6 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
 }
 .header{
     width: 100%;
@@ -475,6 +476,20 @@
     border: none;
     outline: none;
     padding: .52vw;
+    cursor: pointer;
+}
+
+.load-more{
+    outline: none;
+    border: none;
+    display: block;
+    margin: auto;
+    font-size: 1vw;
+    background-color: #2D9EA0;
+    color: white;
+    padding: .65vw 2vw;
+    border-radius: .8vw;
+    cursor: pointer;
 }
 
 .section_9{

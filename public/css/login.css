@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+.login-container {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;/* Horizontal center */
+    align-items: center;   
+    padding-bottom: 2vw;   /* Vertical center */
+    height: 100vh;            /* Full viewport height */
+    background-image: url(../images/bg_interior.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat-y;
+}
+.logo_login img{
+    width:19vw;
+    margin-bottom:1vw;
+}
+.divider_top{
+    bottom:inherit;
+    top:.0vw;
+}
+.double_field{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Form Styling */
+.login-form {
+    backdrop-filter: blur(1.4vw); /* Menentukan intensitas blur */
+    -webkit-backdrop-filter: blur(1.4vw);
+    background-color: #2D9EA0;
+    width: max-content;
+    padding: 2.8vw 2.6vw;
+    padding-bottom: 4vw;
+    box-shadow: 0px 4px 11px 0px #00000034 inset;
+    border: .12vw solid black;
+    border-radius: 2vw;
+    width: 30%;
+}
+
+
+/* Label Styling */
+.login-form label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.error_red ul{
+    margin-top:0;
+}
+
+.error_red ul li{
+    color:red;
+    margin-top:.1vw;
+    margin-bottom:.8vw;
+    font-family:rubik !important;
+    font-size:.8vw;
+    list-style:none;
+    font-weight:400;
+}
+
+.input_login{
+    margin-bottom: 1vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 1.3vw;
+    gap:.6vw;
+}
+.input_login iconify-icon{
+    font-size: 1.3vw;
+    width: 2vw;
+    color:#094019;
+}
+.input_login input{
+    background-color: white;
+    outline: none;
+    border: none;
+    font-size: 1vw;
+    padding: .74vw 0;
+    width:100%;
+    font-family:rubik;
+    color:#094019;
+}
+
+/* Remember Me Checkbox */
+.login-form .remember {
+    margin-top: 1rem;
+}
+
+/* Link Styling */
+.login-form a {
+    color: #6366F1; /* Indigo */
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.login-form button {
+    background-color: #6366F1; /* Indigo */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 1rem;
+}
+
+/* Flex between "Forgot password" and button */
+.login-form .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.login-form button{
+    margin: auto;
+    margin-top: 2vw;
+    margin-bottom: -5.7vw;
+    display: block;
+    width: max-content;
+    outline: none;
+    font-size: 1.1vw;
+    font-weight: 600;
+    padding: 1vw 7vw;
+    border-radius: 100vw;
+    text-transform: uppercase;
+    background: white;
+    color: #2D9EA0;
+    letter-spacing: .1vw;
+    cursor: pointer;
+    border: .12vw solid black;
+}
+.register_login{
+    color:white;
+    font-size:1.1vw;
+    margin-top:4.5vw;
+    font-weight:300;
+    font-family:rubik;
+}
+.register_login a{
+    font-family:rubik;
+    text-decoration:none;
+    font-weight:700;
+    color:#fff;
+}
+.login_link span{
+    font-size:.9vw;
+    font-family:rubik;
+    font-weight:400;
+    color:#094019;
+}
+.login_link a{
+    font-size:.9vw;
+    font-family:rubik;
+    font-weight:400;
+    color:#094019;
+}
+
+@media(max-width:768px){
+    .login-container {
+        height: max-content;  
+        padding:22vw 0;
+        height: 100vh;
+    }
+    .logo_login img{
+        width:55vw;
+        margin-bottom:3vw;
+    }
+    .login-form {
+        width: max-content;
+        padding: 6vw 6vw;
+        padding-bottom: 7vw;
+        border: .12vw solid white;
+        border-radius: 6vw;
+        width: 90%;
+
+    }
+    .error_red ul li{
+        color:red;
+        margin-top:.1vw;
+        margin-bottom:.8vw;
+        font-size:3vw;
+    }
+    
+    .input_login{
+        margin-bottom: 2.8vw;
+        padding: 0 3vw;
+        gap:1.3vw;
+    }
+    .input_login iconify-icon{
+        font-size: 4.4vw;
+        width: 8vw;
+    }
+    .input_login input{
+        font-size: 4vw;
+        padding: 3vw 0;
+    }
+    .login_link span{
+        font-size:3.2vw;
+    }
+    .login_link a{
+        font-size:3.2vw;
+    }
+    .login-form button{
+        margin: auto;
+        margin-top: 5.6vw;
+        margin-bottom: -10.7vw;
+        font-size: 4.3vw;
+        padding: 1.7vw 9vw;
+    }
+    .register_login{
+        color: white;
+        font-size: 3.8vw;
+        margin-top: 11.5vw;
+        font-weight: 300;
+        font-family: rubik;
+    }
+}

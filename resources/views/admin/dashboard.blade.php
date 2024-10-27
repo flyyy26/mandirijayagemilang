@@ -69,8 +69,8 @@
                                 </span>
                             </div>
                             <div class="flex-1 pl-1">
-                                <div class="text-4xl font-medium text-gray-600">{{ $categoryCount }}</div>
-                                <div class="text-sm text-gray-400 sm:text-base">
+                                <div class="text-4xl font-medium text-gray-600">{{ $whatsappCount }}</div>
+                                <div class="text-sm text-gray-400 sm:text-base"> 
                                 Nomor Whatsapp
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="mt-3">
-            <table class="min-w-full bg-white border border-gray-300 rounded-md">
+            <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-lg">
                 <thead>
                     <tr>
                         <th class="px-2 w-16 py-4 text-center border text-base font-medium">No</th>
@@ -104,7 +104,10 @@
                             <td class="px-4 py-2 border text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                             <td class="px-4 py-2 border text-center"><div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div></td>
                             <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
-                            <td class="px-4 py-2 border text-center">+{{ $product->whatsapp->name }}</td>
+                            <td class="px-4 py-2 border text-center">
+                                {{ $product->whatsapp ? '+' . $product->whatsapp->name : '' }}
+                            </td>
+
                         </tr>
                     @empty
                         <tr>
@@ -116,7 +119,7 @@
             <a href="{{ route('admin.products.create') }}" class="w-max block mx-auto mt-9"><button class="bg-blue-500 text-white px-5 py-3 rounded-md mb-4 flex items-center gap-1">Lihat Selengkapnya <iconify-icon icon="mingcute:arrow-right-line"></iconify-icon></button></a>
         </div>
         <div class="mt-9">
-            <table class="min-w-full bg-white border border-gray-300 rounded-md">
+            <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-lg">
                 <thead>
                     <tr>
                         <th class="px-2 w-16 py-4 text-center border text-base font-medium">No</th>

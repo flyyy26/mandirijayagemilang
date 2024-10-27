@@ -13,9 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Models\Product;
+use App\Models\Whatsapp;
+use App\Models\Category;
+
+
 Route::get('/', function () {
-    return view('beranda');
+    $categories = Category::with(['products.whatsapp', 'products.category'])->get();
+    $products = Product::where('category_id', 7)->with('whatsapp', 'category')->take(8)->get();
+    $productsOrnamen = Product::where('category_id', 8)->with('whatsapp', 'category')->take(8)->get();
+
+    return view('beranda', compact('products', 'productsOrnamen', 'categories'));
 });
+
+
 
 use App\Http\Controllers\AdminController;
 
@@ -32,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
+
+
+
 
 
 use App\Http\Controllers\CategoryController;
@@ -55,6 +69,8 @@ use App\Http\Controllers\ProductController;
     Route::get('/admin/products/search', [ProductController::class, 'search'])->name('admin.products.search');
     Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
     Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+
+
 
 use App\Http\Controllers\WhatsappController;
 // Route untuk halaman input kategori

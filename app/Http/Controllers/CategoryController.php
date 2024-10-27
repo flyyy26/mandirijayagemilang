@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
+
         $categories = Category::all(); // Ambil semua kategori dari database
         return response()->json($categories); // Kembalikan data dalam format JSON
     }
@@ -16,6 +17,9 @@ class CategoryController extends Controller
 
     public function create()
     {
+        if (!auth()->check()) {
+            return redirect()->route('admin.login'); // Redirect if not authenticated
+        }
         // Ambil semua kategori
         $categories = Category::all();
 

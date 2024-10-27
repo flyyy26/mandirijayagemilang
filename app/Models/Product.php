@@ -17,8 +17,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    // Product.php
     public function whatsapp()
     {
-        return $this->belongsTo(Whatsapp::class);
+        return $this->belongsTo(Whatsapp::class, 'whatsapp_id');
     }
+
 }

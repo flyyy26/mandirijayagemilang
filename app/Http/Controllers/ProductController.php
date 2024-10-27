@@ -11,11 +11,23 @@ class ProductController extends Controller
 {
     public function create()
     {
+        if (!auth()->check()) {
+            return redirect()->route('admin.login'); // Redirect if not authenticated
+        }
+
         $categories = Category::all(); // Ambil semua kategori untuk form
         $whatsapps = Whatsapp::all();
         $products = Product::with('category')->get(); // Ambil semua produk untuk ditampilkan di tabel
 
         return view('admin.products.create', compact('categories', 'products', 'whatsapps'));
+    }
+
+    public function showCategoryProductsPlafon()
+    {
+        $categoryId = 7; // Specific category ID
+        $products = Product::where('category_id', $categoryId)->get(); // Adjust 'category_id' to match your schema
+
+        return view('beranda', compact('products'));
     }
 
 

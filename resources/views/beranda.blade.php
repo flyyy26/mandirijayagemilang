@@ -18,11 +18,11 @@
         </button>
         <div class="menu_header" id="menuMobilePopup">
             <ul>
-                <li><a href="#">Beranda</a></li>
-                <li><a href="#">Produk</a></li>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Layanan</a></li>
-                <li><a href="#">Hubungi Kami</a></li>
+                <li><a href="#" onclick="popupMenuMobile()">Beranda</a></li>
+                <li><a href="#produk" onclick="popupMenuMobile()">Produk</a></li>
+                <li><a href="#tentang-kami" onclick="popupMenuMobile()">Tentang Kami</a></li>
+                <li><a href="#layanan" onclick="popupMenuMobile()">Layanan</a></li>
+                <li><a href="#hubungi" onclick="popupMenuMobile()">Hubungi Kami</a></li>
             </ul>
         </div>
     </div>
@@ -149,145 +149,46 @@
         <div class="section_8">
             <div class="section_8_heading">
                 <h1><div class="square"></div>Plafon PVC</h1>
-                <a href="#">Lihat Semua</a>
+                <a href="#produk">Lihat Semua</a>
             </div>
             <div class="section_8_layout">
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
+                @foreach($products as $product)
+                    <div class="section_8_box">
+                        <div class="section_8_image">
+                            <a href="#">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                            </a>
+                        </div>
+                        @if($product->whatsapp && $product->category)
+                        <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
+                            <button>Minta Penawaran</button>
                         </a>
+                        @endif
                     </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
+                @endforeach
             </div>
+
         </div>
         <div class="section_8">
             <div class="section_8_heading">
                 <h1><div class="square"></div>Ornamen PVC</h1>
-                <a href="#">Lihat Semua</a>
+                <a href="#produk">Lihat Semua</a>
             </div>
             <div class="section_8_layout">
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
+                @foreach($productsOrnamen as $product)
+                    <div class="section_8_box">
+                        <div class="section_8_image">
+                            <a href="#">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                            </a>
+                        </div>
+                        @if($product->whatsapp && $product->category)
+                        <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
+                            <button>Minta Penawaran</button>
                         </a>
+                        @endif
                     </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
-                <div class="section_8_box">
-                    <div class="section_8_image">
-                        <a href="#">
-                            <img src="images/produk.png" alt="">
-                        </a>
-                    </div>
-                    <a href="#"><button>Minta Penawaran</button></a>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="section_9">
@@ -324,7 +225,7 @@
                 </div>
             </a>
         </div>
-        <div class="section_category_tab">
+        <div class="section_category_tab" id="produk">
             <div class="tab_header">
                 <div class="tab_header_heading">
                     <iconify-icon icon="bxs:category-alt"></iconify-icon>
@@ -332,439 +233,56 @@
                 </div>
                 <div class="tab_container">
                     <div class="tab">
-                        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Plafon Pvc</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris')">List Pvc</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Ornamen Pvc</button>
-                        <button class="tablinks" onclick="openCity(event, 'Jakarta')">Fitting Ornamen Pvc</button>
+                        @foreach($categories as $category)
+                            <button class="tablinks" onclick="openCity(event, '{{ $category->id }}')" id="defaultOpen">{{ $category->name }}</button>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="tab_layout">
-                <div id="London" class="tabcontent">
-                    <h3>PLAFON PVC</h3>
-                    <p>Plafon PVC banyak digunakan untuk hunian pribadi maupun komersial. 
-                        Plafon jenis ini diproduksi dari material PVC berkualitas yang lentur dan tidak mudah pecah. 
-                        Berfungsi sebagai pembatas antara ruangan dengan atap. Selain itu sebuah plafon memberikan kesan rapi,
-                        mewah dan elegan, khususnya untuk plafon ornamen. Harga plafon PVC bervariasi tergantung dari ukuran dan ketebalan. 
-                        Produk ini mudah dalam pemasangan sehingga bisa diaplikasikan untuk berbagai keperluan konstruksi. 
-                        Plafon PVC memiliki banyak keunggulan dibandingkan plafon dari gypsum, triplek, atau fiber semen.
-                        Bahan plafon PVC lebih lentur, ringan, dan mampu bertahan selama puluhan tahun. 
-                        Keawetan ini disebabkan karena kandungan Polymer Isosianat membuat plafon PVC tidak akan terurai atau lapuk. </br></br>
-                        Plafon PVC terbuat dari bahan PVC yang telah di proses dengan peralatan MODERN sehinga menghasilkan produk plafon 
-                        berbentuk papan plastik tipis bersekat, sangat ringan , mudah di bongkar pasang,
-                        tahan air dan anti rayaptersedia dalam aneka ragam motif dan desain ,
-                        tidak mudah kotor mudah di bersihkan, kedap suara, tahan panas,aman di pergunakan karena terbuat dari bahan yang tidak mudah terbakar, 
-                        terbukti jika di dekatkan pada api akan dengan cepat padam, harga sangat terjangkau, 
-                        cocok di aplikasikan di dapur, ruang kantor ruang tamu kamar mandi, dll </p>
-                </div>
-                <div id="Paris" class="tabcontent">
-                    <h3>LIST PLAFON PVC</h3>
-                    <p>Plafon atau langit-langit adalah permukaan interior atas yang berhubungan dengan bagian atas sebuah ruangan.
-                        Umumnya, langit-langit bukan unsur struktural, melainkan permukaan yang menutupi lantai struktur atap di atas. Pada pemasangan plafoan,
-                        biasanya dilengkapi dengan lis plafon yang berfungsi sebagai penghubung antara permukaan plafon dan dinding yang saling menempel.
-                        Tanpa adanya lis plafon, area plafon tidak hanya terlihat biasa saja tapi juga akan mudah retak dan runtuh.</p> 
-                </div>
-
-                <div id="Tokyo" class="tabcontent">
-                    <h3>ORNAMEN PVC</h3>
-                    <p>Sebuah plafon berperan penting bagi ruangan. Plafon berfungsi sebagai pembatas antara ruangan dengan atap.
-                        Ada bayak jenis dan model plafon salah satunya adalah plafon ornamen.
-                        Plafon jenis ini didesain unik dan menarik sehingga cocok digunakan sebagai penunjang penampilan interior ruangan Anda.
-                        Plafon ornamen akan memberikan kesan mewah dan elegan sehingga cocok digunakan untuk kebutuhan komersial. 
-                        Pemasangan plafon ornamen cukup mudah dan bisa digunakan untuk masa pakai yang lama.</p>
-                </div>
-
-                <div id="Jakarta" class="tabcontent">
-                    <h3>FITTING ORNAMEN PVC</h3>
-                    <p>Sebuah plafon berperan penting bagi ruangan. Plafon berfungsi sebagai pembatas antara ruangan dengan atap.
-                        Ada bayak jenis dan model plafon salah satunya adalah plafon ornamen.
-                        Plafon jenis ini didesain unik dan menarik sehingga cocok digunakan sebagai penunjang penampilan interior ruangan Anda.
-                        Plafon ornamen akan memberikan kesan mewah dan elegan sehingga cocok digunakan untuk kebutuhan komersial. 
-                        Pemasangan plafon ornamen cukup mudah dan bisa digunakan untuk masa pakai yang lama.</p>
-                </div>
+                @foreach($categories as $category)
+                    <div id="{{ $category->id }}" class="tabcontent" style="display:none">
+                        <div>{!! $category->description !!}</div>
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="tab_catalog_layout">
-            <div class="tab_catalog_content" id="London">
-                <div class="section_8_layout">
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
+            @foreach($categories as $category)
+                <div class="tab_catalog_content" id="catalog_{{ $category->id }}">
+                    <div class="section_8_layout" id="product-container-{{ $category->id }}">
+                        @foreach($category->products->take(8) as $index => $product) <!-- Limit to first 8 products -->
+                            <div class="section_8_box" data-index="{{ $index }}">
+                                <div class="section_8_image">
+                                    <a href="#">
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                                    </a>
+                                </div>
+                                @if($product->whatsapp && $product->category)
+                                    <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
+                                        <button>Minta Penawaran</button>
+                                    </a>
+                                @endif
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
+
+                    <!-- Check the total number of products in the category -->
+                    @if($category->products->count() > 8)
+                        <div class="pagination_layout">
+                            <button class="load-more" data-category-id="{{ $category->id }}">Lihat Lainnya</button>
                         </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
+                    @endif
+
+                    <div class="produk_keunggulan">
+                        <div>{!! $category->excellence !!}</div>
                     </div>
                 </div>
-                <div class="pagination_layout">
-                    <div class="pagination" id="myDIV">
-                        <button class="btn_pagination">1</button>
-                        <button class="btn_pagination active_pagination">2</button>
-                        <button class="btn_pagination">3</button>
-                        <button class="btn_pagination">4</button>
-                        <button class="btn_pagination">5</button>
-                    </div>
-                    <div class="btn_next">
-                        <button>Next<iconify-icon icon="stash:arrow-right-duotone"></iconify-icon></button>
-                    </div>
-                </div>
-                <div class="produk_keunggulan">
-                    <h1>Keunggulan Produk:</h1>
-                    <p>Penggunaan bahan PVC berkualitas tinggi yang tahan terhadap cuaca, air, dan kelembaban, 
-                        menjadikan produk mereka tahan lama dan mudah perawatan.
-                        Desain inovatif dan beragam untuk memenuhi berbagai gaya dan preferensi desain interior.
-                        Komitmen pada keberlanjutan dengan menggunakan 
-                        bahan ramah lingkungan dan proses produksi yang efisien.</p>
-                    </br>
-                    <h1>Tahan Air:</h1>
-                    <p>Plafon PVC tahan terhadap air, sehingga sangat cocok untuk digunakan di area yang 
-                        rentan terhadap kelembaban, seperti kamar mandi atau dapur. Plafon ini tidak akan mengalami
-                        pembusukan atau deformasi akibat paparan air.</p>
-                    </br>
-                    <h1>Ringan:</h1>
-                    <p>Plafon PVC sangat ringan, sehingga memudahkan instalasi. Keberatan yang ringan juga membuatnya cocok untuk digunakan pada
-                    struktur bangunan yang tidak bisa menahan beban berat.</p>
-                    </br>
-                    <h1>Mudah Dibersihkan:</h1>
-                    <p>Plafon PVC sangat mudah dibersihkan. Cukup dengan menggunakan lap basah atau sikat lembut untuk 
-                    membersihkannya dari debu atau kotoran lainnya. Sifat tahan airnya juga membuatnya dapat dibersihkan dengan menggunakan air.</p>
-                    </br>
-                    <h1>Tahan Terhadap Rayap dan Serangga: </h1>
-                    <p>PVC tidak menarik serangga atau rayap, sehingga plafon ini tidak akan rusak atau terpengaruh oleh serangan hama. Ini menjadikannya pilihan 
-                    yang tahan lama dan mudah dipelihara.</p>
-                    </br>
-                    <h1>Beragam Desain dan Warna: </h1>
-                    <p>Plafon PVC tersedia dalam berbagai desain dan warna, memungkinkan Anda memilih sesuai dengan gaya dan tema desain interior ruangan. 
-                    Ini memberikan fleksibilitas dalam menciptakan tampilan 
-                    yang sesuai dengan preferensi estetika Anda.</p>
-                    </br>
-                    <h1>Harga Terjangkau: </h1>
-                    <p>Dibandingkan dengan beberapa opsi plafon lainnya, plafon PVC cenderung lebih terjangkau. Ini membuatnya menjadi pilihan yang ekonomis 
-                    tanpa mengorbankan kualitas.</p>
-                    </br>
-                    <h1>Tahan Lama: </h1>
-                    <p>Plafon PVC umumnya tahan lama dan tidak mudah rusak. 
-                    Mereka tidak rentan terhadap perubahan suhu atau kelembaban, 
-                    dan mereka dapat tetap dalam kondisi baik selama bertahun-tahun.</p>
-                </div>
-            </div>
-            <div class="tab_catalog_content" id="Paris">
-                <div class="section_8_layout">
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                </div>
-                <div class="pagination_layout">
-                    <div class="pagination" id="myDIV">
-                        <button class="btn_pagination">1</button>
-                        <button class="btn_pagination active_pagination">2</button>
-                        <button class="btn_pagination">3</button>
-                        <button class="btn_pagination">4</button>
-                        <button class="btn_pagination">5</button>
-                    </div>
-                    <div class="btn_next">
-                        <button>Next<iconify-icon icon="stash:arrow-right-duotone"></iconify-icon></button>
-                    </div>
-                </div>
-                <div class="produk_keunggulan">
-                    <p>Bahan yang digunakan dalam pembuatan lis plafon diantaranya  gypsum, PVC, dan kayu. 
-                        Lis plafon ini memiliki kelebihan dan kekurangan masing masing. Biasanya lis plafon dari bahan gypsum pada umumnya
-                        mudah diukir ke dalam bentuk yang rumit. Lis plafon dari PVC cocok untuk bangunan bergaya modern dan minimalis. 
-                        Sedangkan lis plafon dari kayu cocok untuk bangunan bergaya tradisional.
-                    </br></br>
-                        Kami merupakan distributor lis plafon pvc terlengkap, termurah dengan kualitas terbaik.
-                        Selain itu kami juga menyediakan berbagai merk dan model lis plafon pvc terbaik yang sudah menjadi pilihan konsumen untuk segala kebutuhan.
-                        Beli list plafon pvc harga murah dari kami dengan spesifikasi terbaik.
-                        Untuk informasi pemesanan silahkan menghubungi nomor telepon yang tertera pada halaman ini.</p>
-                </div>
-            </div>
-            <div class="tab_catalog_content" id="Tokyo">
-                <div class="section_8_layout">
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                </div>
-                <div class="pagination_layout">
-                    <div class="pagination" id="myDIV">
-                        <button class="btn_pagination">1</button>
-                        <button class="btn_pagination active_pagination">2</button>
-                        <button class="btn_pagination">3</button>
-                        <button class="btn_pagination">4</button>
-                        <button class="btn_pagination">5</button>
-                    </div>
-                    <div class="btn_next">
-                        <button>Next<iconify-icon icon="stash:arrow-right-duotone"></iconify-icon></button>
-                    </div>
-                </div>
-                <div class="produk_keunggulan">
-                    <p>Penggunaan plafon oranamen mampu menambah penampilan interior ruangan Anda. Temukan berbagai jenis dan model plafon ornamen hanya kepada kami untuk produk unggulan 
-                    yang awet dan bisa digunakan untuk waktu yang lama.</p>
-                </div>
-            </div>
-            <div class="tab_catalog_content" id="Jakarta">
-                <div class="section_8_layout">
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                    <div class="section_8_box">
-                        <div class="section_8_image">
-                            <a href="#">
-                                <img src="images/produk.png" alt="">
-                            </a>
-                        </div>
-                        <a href="#"><button>Minta Penawaran</button></a>
-                    </div>
-                </div>
-                <div class="pagination_layout">
-                    <div class="pagination" id="myDIV">
-                        <button class="btn_pagination">1</button>
-                        <button class="btn_pagination active_pagination">2</button>
-                        <button class="btn_pagination">3</button>
-                        <button class="btn_pagination">4</button>
-                        <button class="btn_pagination">5</button>
-                    </div>
-                    <div class="btn_next">
-                        <button>Next<iconify-icon icon="stash:arrow-right-duotone"></iconify-icon></button>
-                    </div>
-                </div>
-                <div class="produk_keunggulan">
-                    <p>Penggunaan plafon oranamen mampu menambah penampilan interior ruangan Anda. Temukan berbagai jenis dan model plafon ornamen hanya kepada kami untuk produk unggulan 
-                    yang awet dan bisa digunakan untuk waktu yang lama.</p>
-                </div>
-            </div>
+            @endforeach
+
+
         </div>
-        <div class="section_about">
+        <div class="section_about" id="tentang-kami">
             <div class="section_about_content">
                 <img src="images/logo_bintang_second.png" alt="">
                 <h3>Tentang Kami</h3>
@@ -851,7 +369,7 @@
                 <img src="images/logo_blue_hd.png" alt="">
             </div>
         </div>
-        <div class="section_contact">
+        <div class="section_contact" id="hubungi">
             <div class="section_contact_maps">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1080.8471092975178!2d106.82555497811362!3d-6.449891792093245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ea1ba8ccb753%3A0x7e917fa48899b0a3!2sTB%20Sogi%20Building%20Material%20Shop!5e0!3m2!1sen!2sid!4v1729413994722!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -874,7 +392,7 @@
                 </div>
             </div>
         </div>
-        <div class="section_promotion">
+        <div class="section_promotion" id="layanan">
             <div class="section_promotion_heading">
                 <h1>Apa yang Kami tawarkan untuk Anda</h1>
                 <p>Kami mempunyai Layanan Unggulan yang berkualitas yang selalu kami sediakan untuk 
@@ -1019,7 +537,8 @@
 
             // Menampilkan tabcontent dan tab_catalog_content yang dipilih
             document.getElementById(cityName).style.display = "flex";
-            document.querySelector('.tab_catalog_content#' + cityName).style.display = "block"; // Menampilkan tab_catalog_content
+            document.querySelector('.tab_catalog_content#catalog_' + cityName).style.display = "block";
+
 
             // Menambahkan kelas 'active' pada tab yang diklik
             evt.currentTarget.className += " active";
@@ -1051,5 +570,63 @@
         });
     </script>
     
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.load-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const categoryId = this.dataset.categoryId;
+                const productContainer = document.getElementById(`product-container-${categoryId}`);
+                const currentProducts = productContainer.querySelectorAll('.section_8_box').length;
+
+                // Find the category from the loaded categories
+                const allProducts = @json($categories->map(function($category) {
+                    return [
+                        'id' => $category->id,
+                        'products' => $category->products // Include all products for the category
+                    ];
+                }));
+
+                const category = allProducts.find(cat => cat.id == categoryId);
+                
+                // Check if products exist for the category
+                if (!category || !category.products) {
+                    alert('No products found for this category.');
+                    return;
+                }
+
+                const nextProducts = category.products.slice(currentProducts, currentProducts + 8);
+
+                if (nextProducts.length === 0) {
+                    alert('No more products to load');
+                    return;
+                }
+
+                // Append new products to the container
+                nextProducts.forEach(product => {
+                    const productBox = document.createElement('div');
+                    productBox.classList.add('section_8_box');
+                    console.log('Product Category:', product.category); // Log category info
+                    console.log('WhatsApp Info:', product.whatsapp); 
+                    productBox.innerHTML = `
+                        <div class="section_8_image">
+                            <a href="#">
+                                <img src="/storage/${product.image}" alt="${product.name}"> <!-- Correct image source -->
+                            </a>
+                        </div>
+                       
+                        ${product.whatsapp && product.category ? 
+                        `<a href="https://api.whatsapp.com/send?phone=${product.whatsapp.name}&text=${encodeURIComponent('Halo, saya ingin melakukan penawaran untuk produk ' + product.category.name + ' dengan nama ' + product.name + '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.')}">
+                            <button>Minta Penawaran</button>
+                        </a>` : ''}
+                    `;
+                    productContainer.appendChild(productBox);
+                });
+            });
+        });
+    });
+</script>
+
+
+
 </body>
 </html>
