@@ -20,7 +20,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="addProductForm" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="grid grid-cols-2 gap-x-6">
@@ -37,9 +37,7 @@
                             
                             <span id="image-error" class="text-red-500 text-sm hidden"></span> <!-- Error message span -->
                         </div>
-
                     </div>
-                    
 
                     <!-- Input Deskripsi Produk -->
                     <div class="mb-4">
@@ -65,18 +63,6 @@
                             </select>
                         </div>
                     </div>
-
-                    <!-- Pilih Nomor WhatsApp -->
-                    <div class="mb-4">
-                        <label for="whatsapp_id" class="block text-gray-700 text-base font-normal mb-2">Nomor WhatsApp</label>
-                        <select name="whatsapp_id" id="whatsapp_id" class="w-full px-4 py-2 border rounded-md" required>
-                            <option value="" disabled selected>Pilih Nomor WhatsApp</option>
-                            @foreach($whatsapps as $whatsapp)
-                                <option value="{{ $whatsapp->id }}">{{ $whatsapp->distributor }} - {{ $whatsapp->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
 
                     <!-- Submit Button -->
                     <div class="flex justify-end gap-3">
@@ -111,7 +97,6 @@
                     <th class="px-4 py-2 w-48 text-center border text-base font-medium">Harga</th>
                     <th class="px-4 py-2 w-55 py-4 text-center border text-base font-medium">Deskripsi</th>
                     <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Kategori</th>
-                    <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Nomor Whatsapp</th>
                     <th class="px-4 py-2 w-48 py-4 text-center border text-base font-medium">Aksi</th>
                 </tr>
             </thead>
@@ -124,11 +109,11 @@
                         </td>
                         <td class="px-4 py-2 border text-center">{{ $product->name }}</td>
                         <td class="px-4 py-2 border text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
-                        <td class="px-4 py-2 border text-center"><div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div></td>
-                        <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
                         <td class="px-4 py-2 border text-center">
-                            {{ $product->whatsapp ? '+' . $product->whatsapp->name : '' }}
+                            <div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div>
                         </td>
+                        <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
+
                         <td class="px-4 py-2 border text-center border-0">
                             <div class="flex justify-center gap-3 items-center">
                                 <button onclick="openEditModal({{ $product->id }}, '{{ $product->name }}', {{ $product->price }}, '{{ $product->description }}', {{ $product->category_id }}, {{ $product->whatsapp_id }})" class="bg-yellow-500 font-normal hover:bg-yellow-700 text-white text-sm font-bold py-2 px-4 rounded">
@@ -147,11 +132,12 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center py-4">Tidak ada produk yang ditemukan.</td>
+                        <td colspan="8" class="text-center py-4">Tidak ada produk yang ditemukan.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+
     </div>
 
     <div id="editModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
@@ -202,14 +188,6 @@
                         </div>
                     </div>
 
-                    <!-- Edit Nomor WhatsApp -->
-                    <div class="mb-4 text-start">
-                        <label for="editProductWhatsapp" class="block text-gray-700 text-base font-normal mb-2">Nomor Whatsapp:</label>
-                        <select name="whatsapp_id" id="editProductWhatsapp" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <!-- Nanti akan diisi dengan data kategori dari JavaScript -->
-                        </select>
-                    </div>
-
                     <div class="flex justify-end gap-3">
                         <button type="button" onclick="closeEditModal()" class="bg-red-500 hover:bg-red-700 text-white text-base font-normal py-2 px-4 rounded">
                             Batal
@@ -223,6 +201,71 @@
         </div>
     </div>
 
+
+    <script>
+        function toggleWhatsappDropdown() {
+        const dropdown = document.getElementById('whatsappDropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function toggleWhatsappEditDropdown() {
+        const dropdown = document.getElementById('editWhatsappDropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function updateWhatsappButtonLabel() {
+        const button = document.getElementById('whatsappButton');
+        const checkboxes = document.querySelectorAll('input[name="whatsapp_ids_add[]"]:checked');
+        const names = Array.from(checkboxes).map(cb => cb.nextElementSibling.textContent.trim());
+        button.textContent = names.length > 0 ? names.join(', ') : 'Pilih Nomor WhatsApp';
+    }
+
+    function updateEditWhatsappButtonLabel() {
+        const checkboxes = document.querySelectorAll('input[name="whatsapp_ids_edit[]"]:checked');
+        const selectedNames = [];
+
+        checkboxes.forEach(checkbox => {
+            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            if (label) {
+                selectedNames.push(label.textContent.trim());
+            }
+        });
+
+        const editWhatsappButton = document.getElementById('editWhatsappButton');
+        if (selectedNames.length > 0) {
+            editWhatsappButton.textContent = selectedNames.join(', '); // Show selected names
+        } else {
+            editWhatsappButton.textContent = 'Pilih Nomor WhatsApp'; // Default text if none selected
+        }
+    }
+
+    // Function to initialize button label and checkboxes on page load
+    function initializeEditWhatsapp() {
+        updateEditWhatsappButtonLabel(); // Update button label on page load
+    }
+
+    window.onload = initializeEditWhatsapp;
+
+        // Optional: Close the dropdown when clicking outside of it
+        window.onclick = function(event) {
+    const whatsappDropdown = document.getElementById('whatsappDropdown');
+    const editWhatsappDropdown = document.getElementById('editWhatsappDropdown');
+    const whatsappButton = document.getElementById('whatsappButton');
+    const editWhatsappButton = document.getElementById('editWhatsappButton');
+
+    // Hide the WhatsApp dropdown if clicked outside
+    if (!event.target.matches('#whatsappButton') && !whatsappDropdown.contains(event.target)) {
+        whatsappDropdown.classList.add('hidden');
+    }
+
+    // Hide the Edit WhatsApp dropdown if clicked outside
+    if (!event.target.matches('#editWhatsappButton') && !editWhatsappDropdown.contains(event.target)) {
+        editWhatsappDropdown.classList.add('hidden');
+    }
+};
+
+
+    </script>
 
     <script>
         function checkFileSize(input, errorId) {
@@ -302,8 +345,29 @@
         }
 
         function closeModal() {
+            console.log("Closing modal..."); // Debug log
             document.getElementById('kategoriModal').classList.add('hidden');
+
+            // Reset form fields
+            const form = document.getElementById('addProductForm');
+            form.reset(); // Resets all form fields to their default values
+
+            // Reset WhatsApp checkboxes
+            const whatsappCheckboxes = document.querySelectorAll('input[name="whatsapp_ids_add[]"]');
+            whatsappCheckboxes.forEach(checkbox => {
+                console.log(`Resetting checkbox: ${checkbox.id}`); // Debug log
+                checkbox.checked = false; // Uncheck each checkbox
+            });
+
+            // Reset the WhatsApp button label
+            document.getElementById('whatsappButton').textContent = 'Pilih Nomor WhatsApp';
+
+            // Optional: Reset error messages
+            const errorSpan = document.getElementById('image-error');
+            errorSpan.classList.add('hidden'); // Hide error message if visible
+            errorSpan.textContent = ''; // Clear the error message
         }
+
     </script>
      <script>
         function openEditModal(id, name, price, description, categoryId, whatsappId) {
@@ -350,6 +414,8 @@
 
 
         function closeEditModal() {
+            resetEditProductForm();
+
             const modal = document.getElementById('editModal');
             modal.classList.add('hidden');
         }
@@ -361,4 +427,33 @@
             }
         }
     </script>
+    <script>
+        function resetEditProductForm() {
+            // Reset text inputs
+            document.getElementById('editProductName').value = '';
+            document.getElementById('editProductDescription').value = '';
+            document.getElementById('editProductPrice').value = '';
+            
+            // Reset file input
+            document.getElementById('editImage').value = '';
+            
+            // Reset select input
+            document.getElementById('editProductCategory').selectedIndex = 0; // Assuming you want to select the first option
+
+            // Uncheck all checkboxes
+            const checkboxes = document.querySelectorAll('input[name="whatsapp_ids_edit[]"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            // Reset button text
+            document.getElementById('editWhatsappButton').textContent = 'Pilih Nomor WhatsApp';
+
+            // Reset error messages
+            const errorSpan = document.getElementById('image-error2');
+            errorSpan.classList.add('hidden'); // Hide error message if any
+            errorSpan.textContent = ''; // Clear error message
+        }
+    </script>
+
 @endsection

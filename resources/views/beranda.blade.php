@@ -37,8 +37,8 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="section_1_text">
-                        <h1>Bintang Plafon Pvc</h1>
-                        <p>Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
+                        <h1>Plafon PVC Terbaik</h1>
+                        <p>Kualitas, Estetika, dan Ketahanan!</p>
                     </div>
                 </div>
             </div>
@@ -67,13 +67,16 @@
             <p>BINTANG PLAFON adalah <br/>
             Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
         </div>
-        <a href="#">
-            <div class="hotline_box">
-                <p>Hubungi hotline service <br/>
-                pada tombol kontak</p>
-                <img src="images/hotline.svg" alt="">
-            </div>
-        </a>
+        @if($hotline)
+            <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
+                <div class="hotline_box">
+                    <p>Hubungi hotline service <br/>
+                    pada tombol kontak</p>
+                    <img src="images/hotline.svg" alt="Hotline Image">
+                </div>
+            </a>
+        @endif
+
         <img src="images/section_2_img.png" alt="" class="section_2_img">
     </div>
     <div class="section_3">
@@ -159,15 +162,37 @@
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                             </a>
                         </div>
-                        @if($product->whatsapp && $product->category)
-                        <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
-                            <button>Minta Penawaran</button>
-                        </a>
-                        @endif
+                        <button 
+                            data-category="{{ $product->category->name }}" 
+                            data-product="{{ $product->name }}" 
+                            onclick="showWhatsAppModal(this)">Minta Penawaran</button>
                     </div>
                 @endforeach
             </div>
 
+            <!-- Popup Modal -->
+            <div id="whatsappModal" class="popup_btn">
+                <div class="overlay_modal" onclick="closeWhatsappModal()"></div>
+                <div class="popup_btn_box">
+                    <h2 class="">Silahkan Pilih Toko</h2>
+                    <ul class="list_number" id="whatsappNumbersList">
+                        @foreach($whatsapps as $whatsapp)
+                            <li>
+                                <a href="#" class="whatsapp-link" data-phone="{{ $whatsapp->name }}">
+                                <button class="button-14" role="button">
+                                <div class="button-14-top text">{{ $whatsapp->distributor }}</div>
+                                <div class="button-14-bottom"></div>
+                                <div class="button-14-base"></div>
+                                </button>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="close_modal_produk">
+                        <button onclick="closeWhatsappModal()" class=""><iconify-icon icon="iconamoon:close-duotone"></iconify-icon></button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section_8">
             <div class="section_8_heading">
@@ -182,11 +207,10 @@
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                             </a>
                         </div>
-                        @if($product->whatsapp && $product->category)
-                        <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
-                            <button>Minta Penawaran</button>
-                        </a>
-                        @endif
+                        <button 
+                            data-category="{{ $product->category->name }}" 
+                            data-product="{{ $product->name }}" 
+                            onclick="showWhatsAppModal(this)">Minta Penawaran</button>
                     </div>
                 @endforeach
             </div>
@@ -258,11 +282,10 @@
                                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                                     </a>
                                 </div>
-                                @if($product->whatsapp && $product->category)
-                                    <a href="https://api.whatsapp.com/send?phone={{ $product->whatsapp->name }}&text={{ urlencode('Halo, saya ingin melakukan penawaran untuk produk ' . $product->category->name . ' dengan nama ' . $product->name . '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.') }}">
-                                        <button>Minta Penawaran</button>
-                                    </a>
-                                @endif
+                                <button 
+                                data-category="{{ $product->category->name }}" 
+                                data-product="{{ $product->name }}" 
+                                onclick="showWhatsAppModal(this)">Minta Penawaran</button>
                             </div>
                         @endforeach
                     </div>
@@ -563,6 +586,10 @@
     <script>
         var swiper = new Swiper(".mySwiper", {
         loop:true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -578,22 +605,23 @@
                 const productContainer = document.getElementById(`product-container-${categoryId}`);
                 const currentProducts = productContainer.querySelectorAll('.section_8_box').length;
 
-                // Find the category from the loaded categories
+                // Fetch all categories and products data
                 const allProducts = @json($categories->map(function($category) {
                     return [
                         'id' => $category->id,
-                        'products' => $category->products // Include all products for the category
+                        'products' => $category->products->toArray() // Convert to array for JavaScript
                     ];
                 }));
 
                 const category = allProducts.find(cat => cat.id == categoryId);
-                
+
                 // Check if products exist for the category
                 if (!category || !category.products) {
                     alert('No products found for this category.');
                     return;
                 }
 
+                // Get the next set of products to load
                 const nextProducts = category.products.slice(currentProducts, currentProducts + 8);
 
                 if (nextProducts.length === 0) {
@@ -605,26 +633,73 @@
                 nextProducts.forEach(product => {
                     const productBox = document.createElement('div');
                     productBox.classList.add('section_8_box');
-                    console.log('Product Category:', product.category); // Log category info
-                    console.log('WhatsApp Info:', product.whatsapp); 
+                    
                     productBox.innerHTML = `
                         <div class="section_8_image">
                             <a href="#">
-                                <img src="/storage/${product.image}" alt="${product.name}"> <!-- Correct image source -->
+                                <img src="{{ asset('storage') }}/${product.image}" alt="${product.name}">
                             </a>
                         </div>
-                       
-                        ${product.whatsapp && product.category ? 
-                        `<a href="https://api.whatsapp.com/send?phone=${product.whatsapp.name}&text=${encodeURIComponent('Halo, saya ingin melakukan penawaran untuk produk ' + product.category.name + ' dengan nama ' + product.name + '. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.')}">
-                            <button>Minta Penawaran</button>
-                        </a>` : ''}
+                        <button 
+                            data-category="${product.category.name}" 
+                            data-product="${product.name}" 
+                            onclick="showWhatsAppModal(this)">
+                            Minta Penawaran
+                        </button>
                     `;
+                    
                     productContainer.appendChild(productBox);
                 });
             });
         });
     });
+
+    // Function to open WhatsApp modal with product details
+    function showWhatsAppModal(button) {
+        const categoryName = button.getAttribute('data-category');
+        const productName = button.getAttribute('data-product');
+
+        const whatsappLinks = document.querySelectorAll('.whatsapp-link');
+        whatsappLinks.forEach(link => {
+            const phoneNumber = link.getAttribute('data-phone');
+            const message = encodeURIComponent(
+                `Halo, saya ingin melakukan penawaran untuk produk ${categoryName} dengan nama ${productName}. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.`
+            );
+            link.setAttribute('href', `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`);
+        });
+
+        // Display the WhatsApp modal
+        document.getElementById('whatsappModal').classList.add('active');
+    }
+
+    function closeWhatsappModal() {
+        document.getElementById('whatsappModal').classList.remove('active');
+    }
 </script>
+
+<script>
+    function showWhatsAppModal(button) {
+        // Get the category and product names from the button data attributes
+        const categoryName = button.getAttribute('data-category');
+        const productName = button.getAttribute('data-product');
+
+        // Update WhatsApp links in the modal
+        const whatsappListItems = document.querySelectorAll('.whatsapp-link');
+        whatsappListItems.forEach(link => {
+            const phoneNumber = link.getAttribute('data-phone');
+            const message = encodeURIComponent(`Halo, saya ingin melakukan penawaran untuk produk ${categoryName} dengan nama ${productName}. Mohon info lebih lanjut mengenai harga dan ketersediaan. Terima kasih.`);
+            link.setAttribute('href', `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`);
+        });
+
+        // Show the modal
+        document.getElementById('whatsappModal').classList.add('active');
+    }
+
+    function closeWhatsappModal() {
+        document.getElementById('whatsappModal').classList.remove('active');
+    }
+</script>
+
 
 
 

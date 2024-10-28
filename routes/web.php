@@ -16,14 +16,24 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\Whatsapp;
 use App\Models\Category;
+use App\Models\Hotline;
+
+Route::get('/whatsapp-numbers/{product}', function (Product $product) {
+    return response()->json($product->whatsapps); // Assuming the relationship is defined in the Product model
+});
 
 
+// In the route or controller:
 Route::get('/', function () {
-    $categories = Category::with(['products.whatsapp', 'products.category'])->get();
-    $products = Product::where('category_id', 7)->with('whatsapp', 'category')->take(8)->get();
-    $productsOrnamen = Product::where('category_id', 8)->with('whatsapp', 'category')->take(8)->get();
+    $categories = Category::with(['products.category'])->get();
+    $products = Product::where('category_id', 7)->with('category')->take(8)->get();
+    $productsOrnamen = Product::where('category_id', 8)->with('category')->take(8)->get();
 
-    return view('beranda', compact('products', 'productsOrnamen', 'categories'));
+    // Fetch WhatsApp numbers and the first hotline entry
+    $whatsapps = WhatsApp::all();
+    $hotline = Hotline::first(); // Get only the first hotline
+
+    return view('beranda', compact('products', 'productsOrnamen', 'categories', 'whatsapps', 'hotline'));
 });
 
 
@@ -69,7 +79,7 @@ use App\Http\Controllers\ProductController;
     Route::get('/admin/products/search', [ProductController::class, 'search'])->name('admin.products.search');
     Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
     Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
-
+    
 
 
 use App\Http\Controllers\WhatsappController;

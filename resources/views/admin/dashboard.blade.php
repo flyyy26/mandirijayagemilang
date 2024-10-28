@@ -90,7 +90,6 @@
                         <th class="px-4 py-2 w-48 text-center border text-base font-medium">Harga</th>
                         <th class="px-4 py-2 w-55 py-4 text-center border text-base font-medium">Deskripsi</th>
                         <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Kategori</th>
-                        <th class="px-4 py-2 w-52 py-4 text-center border text-base font-medium">Nomor Whatsapp</th>
                     </tr>
                 </thead>
                 <tbody id="productTableBody">
@@ -104,9 +103,6 @@
                             <td class="px-4 py-2 border text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                             <td class="px-4 py-2 border text-center"><div class="h-16 overflow-y-auto scrollbar-none">{{ $product->description }}</div></td>
                             <td class="px-4 py-2 border text-center">{{ $product->category->name }}</td>
-                            <td class="px-4 py-2 border text-center">
-                                {{ $product->whatsapp ? '+' . $product->whatsapp->name : '' }}
-                            </td>
 
                         </tr>
                     @empty

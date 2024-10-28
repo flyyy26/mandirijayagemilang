@@ -11,7 +11,7 @@ class Whatsapp extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class, 'product_whatsapp');
     }
 
     protected $fillable = ['name', 'distributor'];

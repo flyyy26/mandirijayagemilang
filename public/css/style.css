@@ -420,6 +420,22 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1.3vw;
 }
+/* #whatsappModal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 100;
+}
+#whatsappModal .active_popup{
+    display: block;
+} */
+ .whatsapp-modal{
+    display: none;
+ }
 .section_8_heading{
     display: flex;
     align-items: center;
@@ -456,6 +472,8 @@
     height: 20.4vw;
     position: relative;
     margin-bottom: .9vw;
+    overflow: hidden;
+    
 }
 .section_8_image img{
     position: absolute;
@@ -465,6 +483,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    transition: .4s all;
+}
+.section_8_image:hover img{
+    transform: scale(1.1);
 }
 .section_8_box button{
     width: 100%;
@@ -477,7 +499,235 @@
     outline: none;
     padding: .52vw;
     cursor: pointer;
+    transition: .4s all;
 }
+.section_8_box button:hover{
+    transform: translateX(.6vw);
+}
+
+.popup_btn{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+.popup_btn.active {
+    display: flex; /* Show when active */
+}
+.overlay_modal{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.719);
+    animation: opacity .4s ease;
+}
+@keyframes opacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.popup_btn_box{
+    background-color: black;
+    border: .12vw solid #2D9EA0;
+    z-index: 10;
+    width: 30%;
+    text-align: center;
+    padding: 1.4vw;
+    padding-bottom: 1.6vw;
+    border-radius: 1.7vw;
+    position: relative;
+    animation: popupBox .4s ease;
+}
+@keyframes popupBox {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.popup_btn_box h2{
+    font-size: 1.4vw;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 1.4vw;
+}
+.list_number{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    gap: 1.5vw;
+}
+.list_number li a{
+    
+    color: white;
+    
+}
+.list_number li a button{
+    font-size: 1.1vw;
+}
+.close_modal_produk{
+    position: absolute;
+    right: -1vw;
+    top: -1vw;
+}
+.close_modal_produk button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 2.6vw;
+    height: 2.6vw;
+    border-radius: 100vw;
+    position: relative;
+    cursor: pointer;
+    background-color: #2D9EA0;
+    border: .12vw solid black;
+    transition: .4s all;
+}
+.close_modal_produk button iconify-icon{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6vw;
+    color: black;
+}
+.close_modal_produk button:hover{
+    transform: scale(1.07);
+}
+
+.button-14 {
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    border-width: 0;
+    padding: 0 8px 12px;
+    min-width: 10em;
+    box-sizing: border-box;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .button-14-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    padding: 8px 16px;
+    transform: translateY(0);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0, 0, 0, .25);
+    transition-property: transform;
+    transition-duration: .2s;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .button-14:active .button-14-top {
+    transform: translateY(6px);
+  }
+
+  .button-14-top::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    background-image: radial-gradient(#25d366, #12ac4a);
+    text-align: center;
+    color: #fff;
+    box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, .2), 0 1px 2px 1px rgba(255, 255, 255, .2);
+    transition-property: border-radius, padding, width, transform;
+    transition-duration: .2s;
+  }
+
+  .button-14:active .button-14-top::after {
+    border-radius: 6px;
+    padding: 0 2px;
+  }
+
+  .button-14-bottom {
+    position: absolute;
+    z-index: -1;
+    bottom: 4px;
+    left: 4px;
+    border-radius: 8px / 16px 16px 8px 8px;
+    padding-top: 6px;
+    width: calc(100% - 8px);
+    height: calc(100% - 10px);
+    box-sizing: content-box;
+    background-color: #0ab448;
+    background-image: radial-gradient(4px 8px at 4px calc(100% - 8px), rgba(255, 255, 255, .25), transparent), radial-gradient(4px 8px at calc(100% - 4px) calc(100% - 8px), rgba(255, 255, 255, .25), transparent), radial-gradient(16px at -4px 0, white, transparent), radial-gradient(16px at calc(100% + 4px) 0, white, transparent);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), inset 0 -1px 3px 3px rgba(0, 0, 0, .4);
+    transition-property: border-radius, padding-top;
+    transition-duration: .2s;
+  }
+
+  .button-14:active .button-14-bottom {
+    border-radius: 10px 10px 8px 8px / 8px;
+    padding-top: 0;
+  }
+
+  .button-14-base {
+    position: absolute;
+    z-index: -2;
+    top: 4px;
+    left: 0;
+    border-radius: 12px;
+    width: 100%;
+    height: calc(100% - 4px);
+    background-color: rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 1px 0 rgba(255, 255, 255, .75), inset 0 2px 2px rgba(0, 0, 0, .25);
+  }
+
+  @media (max-width:768px) {
+    .popup_btn_box{
+        width: 90%;
+        border-radius: 3vw;
+        padding: 2.7vw;
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+    }
+    .popup_btn_box h2{
+        font-size: 4vw;
+        margin-bottom: 4.5vw;
+    }
+    .list_number{
+        gap: 3vw;
+    }
+    .list_number li a button{
+        font-size: 4vw;
+    }
+    .close_modal_produk {
+        position: absolute;
+        right: 0;
+        top: -12vw;
+    }
+    .close_modal_produk button{
+        width: 8.5vw;
+        height: 8.5vw;
+    }
+    .close_modal_produk button{
+        font-size: 6.6vw;
+    }
+  }
 
 .load-more{
     outline: none;
@@ -490,6 +740,20 @@
     padding: .65vw 2vw;
     border-radius: .8vw;
     cursor: pointer;
+}
+@media (max-width:768px) {
+    .load-more{
+        outline: none;
+        border: none;
+        display: block;
+        margin: auto;
+        font-size: 3.5vw;
+        background-color: #2D9EA0;
+        color: white;
+        padding: 1.4vw 4vw;
+        border-radius: 2vw;
+        cursor: pointer;
+    }
 }
 
 .section_9{
@@ -1399,7 +1663,7 @@ a{
 
     .pagination_layout{
         padding: 0 0;
-        margin-top: 3vw;
+        margin-top: 5vw;
     }
     .pagination{
         gap: 2.1vw;
