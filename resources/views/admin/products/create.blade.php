@@ -145,7 +145,7 @@
             <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                 <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
             </div>
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg transform transition-all w-full max-w-6xl p-6">
+            <div class="bg-white rounded-lg text-start overflow-hidden shadow-lg transform transition-all w-full max-w-6xl p-6">
                 <h2 class="text-2xl text-start font-medium mb-4">Edit Produk</h2>
                 <form id="editProductForm" action="" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -153,13 +153,13 @@
 
                     <div class="grid grid-cols-2 gap-x-6">
                         <!-- Nama Produk -->
-                        <div class="mb-4 text-start">
+                        <div class="mb-4 text-left	">
                             <label for="editProductName" class="block text-gray-700 text-base font-normal mb-2">Nama Produk:</label>
                             <input type="text" name="name" id="editProductName" class="text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>
 
                          <!-- Gambar Sampul -->
-                        <div class="mb-4 text-start">
+                        <div class="mb-4 text-left	">
                             <label for="editImage" class="block text-gray-700 text-base font-normal mb-2">Gambar Cover:</label>
                             <input type="file" name="image" id="editImage" onchange="checkFileSize(this, 'image-error2')" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
 
@@ -167,20 +167,20 @@
                         </div>
                     </div>
 
-                    <div class="mb-4 text-start">
+                    <div class="mb-4 text-left	">
                         <label for="editProductDescription" class="block text-gray-700 text-base font-normal mb-2">Deskripsi Produk:</label>
                         <textarea name="description" id="editProductDescription" class="w-full px-4 py-2 border rounded-md"></textarea>
                     </div>
 
                     <div class="grid grid-cols-2 gap-x-6">
                         <!-- Harga -->
-                        <div class="mb-4 text-start">
+                        <div class="mb-4 text-left	">
                             <label for="editProductPrice" class="block text-gray-700 text-base font-normal mb-2">Harga:</label>
                             <input type="text" name="price" id="editProductPrice" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         </div>
 
                         <!-- Kategori -->
-                        <div class="mb-4 text-start">
+                        <div class="mb-4 text-left	">
                             <label for="editProductCategory" class="block text-gray-700 text-base font-normal mb-2">Kategori:</label>
                             <select name="category_id" id="editProductCategory" class="shadow text-base appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <!-- Nanti akan diisi dengan data kategori dari JavaScript -->
@@ -345,7 +345,6 @@
         }
 
         function closeModal() {
-            console.log("Closing modal..."); // Debug log
             document.getElementById('kategoriModal').classList.add('hidden');
 
             // Reset form fields
@@ -394,19 +393,7 @@
                     });
                 });
 
-            // Ambil data WhatsApp dari server dan isi dropdown
-            fetch('/admin/whatsapps') // Pastikan route ini mengembalikan daftar WhatsApp
-                .then(response => response.json())
-                .then(data => {
-                    const whatsappSelect = document.getElementById('editProductWhatsapp');
-                    whatsappSelect.innerHTML = ''; // Kosongkan opsi WhatsApp sebelumnya
-
-                    // Tambahkan opsi WhatsApp ke dropdown
-                    data.forEach(whatsapp => {
-                        const selectedWhatsapp = whatsapp.id === whatsappId ? 'selected' : ''; // Tentukan WhatsApp yang dipilih
-                        whatsappSelect.innerHTML += `<option value="${whatsapp.id}" ${selectedWhatsapp}>${whatsapp.distributor} - ${whatsapp.name}</option>`;
-                    });
-                });
+            // Ambil data WhatsApp dari server dan isi dropdow
 
             modal.classList.remove('hidden');
         }
@@ -414,7 +401,6 @@
 
 
         function closeEditModal() {
-            resetEditProductForm();
 
             const modal = document.getElementById('editModal');
             modal.classList.add('hidden');

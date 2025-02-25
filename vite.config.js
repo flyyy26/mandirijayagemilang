@@ -3,9 +3,11 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
+        laravel(['resources/ts/app.tsx']), // Menggunakan app.tsx sebagai titik masuk aplikasi
     ],
+    resolve: {
+        alias: {
+            '@': '/resources/ts', // Mengatur alias '@' untuk merujuk ke direktori resources/ts
+        },
+    },
 });

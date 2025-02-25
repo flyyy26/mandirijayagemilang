@@ -10,20 +10,54 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo_header">
-            <img src="images/logo_bintang.png" alt="">
+        <div class="header_top">
+            <div class="nav_top">
+                <div class="contact_nav">
+                    <div class="contact_nav_box">
+                        <iconify-icon icon="weui:location-outlined"></iconify-icon>
+                        <p> Jl. Kedung Asem, Mekarmaya, Kec. Cilamaya Wetan, Karawang 41384</p>
+                    </div>
+                    <div class="contact_nav_box">
+                        <iconify-icon icon="mdi-light:phone"></iconify-icon>
+                        <a href="https://api.whatsapp.com/send?phone=6282325362169" target="blank_"><p>082325362169</p></a>
+                    </div>
+                    <div class="contact_nav_box">
+                        <iconify-icon icon="ph:envelope-light"></iconify-icon>
+                        <a href="mailto: ahmadagusindra@gmail.com" target="_blank"><p> ahmadagusindra@gmail.com</p></a>
+                    </div>
+                </div>
+                <div class="sosmed_nav">
+                    <p>Ikuti Kami di </p>
+                    <div class="sosmed_nav_box">
+                        @foreach($socials as $item) 
+                            <a href="{{ $item->name ?? '#' }}" target="_blank" rel="noopener noreferrer">
+                                <div>
+                                    <iconify-icon icon="{{ $item->icon }}"></iconify-icon>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+
+
+                </div>
+            </div>
         </div>
-        <button id="menuToggleButton" class="hamburger" onclick="popupMenuMobile()">
-            <iconify-icon id="menuIcon" icon="radix-icons:hamburger-menu"></iconify-icon>
-        </button>
-        <div class="menu_header" id="menuMobilePopup">
-            <ul>
-                <li><a href="#" onclick="popupMenuMobile()">Beranda</a></li>
-                <li><a href="#produk" onclick="popupMenuMobile()">Produk</a></li>
-                <li><a href="#tentang-kami" onclick="popupMenuMobile()">Tentang Kami</a></li>
-                <li><a href="#layanan" onclick="popupMenuMobile()">Layanan</a></li>
-                <li><a href="#hubungi" onclick="popupMenuMobile()">Hubungi Kami</a></li>
-            </ul>
+        <div class="header_container">
+            <div class="logo_header">
+                <img src="images/logo_rizqita_second.png" alt="">
+            </div>
+            <button id="menuToggleButton" class="hamburger" onclick="popupMenuMobile()">
+                <iconify-icon id="menuIcon" icon="radix-icons:hamburger-menu"></iconify-icon>
+            </button>
+            <div class="menu_header" id="menuMobilePopup">
+                <ul>
+                    <li><a href="#" onclick="popupMenuMobile()">Beranda</a></li>
+                    <li><a href="#produk" onclick="popupMenuMobile()">Produk</a></li>
+                    <li><a href="#tentang-kami" onclick="popupMenuMobile()">Tentang Kami</a></li>
+                    <li><a href="#layanan" onclick="popupMenuMobile()">Layanan</a></li>
+                    <li><a href="#hubungi" onclick="popupMenuMobile()">Hubungi Kami</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="section_1">
@@ -31,7 +65,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="section_1_text">
-                        <h1>Bintang Plafon Pvc</h1>
+                        <h1>Distributor PVC Berkualitas</h1>
                         <p>Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
                     </div>
                 </div>
@@ -45,26 +79,12 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
-        <img src="images/section_1_img.png" alt="Bintang Plafon PVC Group" class="section_1_img">
-        <!-- <div class="section_1_layanan">
-            <span>Saya Ingin :</span>
-            <form action="">
-                <div class="select_layout">
-                    <select name="" id="">
-                        <option value="" default>Pilihan Layanan</option>
-                        <option value="">Layanan 1</option>
-                        <option value="">Layanan 2</option>
-                    </select>
-                    <iconify-icon icon="ion:chevron-down"></iconify-icon>
-                </div>
-                <button>Cari Layanan</button>
-            </form>
-        </div> -->
+        <img src="images/section_1_img.webp" alt="Bintang Plafon PVC Group" class="section_1_img">
     </div>
     <div class="section_2">
         <div class="section_2_content">
             <h1>Masih Bingung Mau <br/><font>Ganti plafon merk apa?</font></h1>
-            <p>BINTANG PLAFON adalah <br/>
+            <p>Rizqita Jaya Gemilang adalah <br/>
             Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
         </div>
         @if($hotline)
@@ -77,27 +97,23 @@
             </a>
         @endif
 
-        <img src="images/section_2_img.png" alt="" class="section_2_img">
+        <img src="images/section_2_img.webp" alt="" class="section_2_img">
     </div>
     <div class="section_3">
         <div class="section_3_content">
-            <img src="images/logo_bintang.png" alt="" class="section_3_logo">
+            <img src="images/logo_rizqita_third.png" alt="" class="section_3_logo">
             <p>Keunggulan Produk:</p>
-            <p>Penggunaan bahan PVC berkualitas tinggi yang tahan terhadap cuaca, air, dan kelembaban, 
-            menjadikan produk mereka tahan lama dan mudah perawatan.
-            Desain inovatif dan beragam untuk memenuhi berbagai gaya dan preferensi desain interior.
-            Komitmen pada keberlanjutan dengan menggunakan 
-            bahan ramah lingkungan dan proses produksi yang efisien.</p>
+            <p>Kami percaya setiap ruangan berpotensi menciptakan suasana yang indah dan nyaman. Oleh karena itu, kami menawarkan rangkaian produk unggulan untuk memberikan sentuhan khusus pada ruangan Anda, menggabungkan kualitas, keindahan, dan inovasi.</p>
             <img src="images/section_3_icon.png" alt="" class="section_3_icon">
         </div>
         <div class="section_3_image">
-            <img src="images/section_3_img.png" alt="">
-            <img src="images/section_3_material.png" alt="" class="section_3_material">
+            <img src="images/section_3_img.webp" alt="">
+            <img src="images/section_3_material.webp" alt="" class="section_3_material">
         </div>
     </div>
     <div class="section_4">
         <div class="section_4_content">
-            <img src="images/logo_bintang.png" alt="">
+            <img src="images/logo_rizqita_third.png" alt="">
             <p>Sebuah ornamen berperan penting bagi lampu hias ruangan. Ada bayak jenis dan model Ornamen, </br>
             Ornamen jenis ini didesain unik dan menarik sehingga cocok digunakan </br>
             sebagai penunjang penampilan interior ruangan Anda. ornamen akan memberikan 
@@ -105,13 +121,13 @@
             Pemasangan ornamen cukup mudah dan bisa digunakan untuk masa pakai yang lama.</p>
             <img src="images/section_3_icon.png" alt="" class="section_3_icon section_3_icon_sc">
         </div>
-        <img src="images/ornamen_1.png" alt="" class="ornamen_1">
-        <img src="images/ornamen_2.png" alt="" class="ornamen_2">
-        <img src="images/ornamen_3.png" alt="" class="ornamen_3">
+        <img src="images/ornamen_1.webp" alt="" class="ornamen_1">
+        <img src="images/ornamen_2.webp" alt="" class="ornamen_2">
+        <img src="images/ornamen_3.webp" alt="" class="ornamen_3">
     </div>
     <div class="section_5">
         <div class="section_5_content">
-            <img src="images/logo_bintang.png" alt="">
+            <img src="images/logo_rizqita_third.png" alt="">
             <p>LIS PLAFON PVC</br>
             Plafon atau langit-langit adalah permukaan interior atas yang berhubungan </br>
             dengan bagian atas sebuah ruangan. Umumnya, </br>
@@ -126,27 +142,24 @@
             </p>
             <img src="images/section_3_icon.png" alt="" class="section_3_icon section_3_icon_sc">
         </div>
-        <img src="images/lis_ornamen.svg" alt="" class="lis_ornamen">
+        <img src="images/lis_ornamen.webp" alt="" class="lis_ornamen">
     </div>
     <div class="section_6">
-        <div class="section_6_box" style="background-image:url(images/section_6_1.png);">
-            <img src="images/logo_bintang.png" alt="">
+        <div class="section_6_box" style="background-image:url(images/section_6_1.webp);">
+            <img src="images/logo_rizqita_third.png" alt="">
         </div>
-        <div class="section_6_box" style="background-image:url(images/section_6_2.png);">
-            <img src="images/logo_bintang.png" alt="">
+        <div class="section_6_box" style="background-image:url(images/section_6_2.webp);">
+            <img src="images/logo_rizqita_third.png" alt="">
         </div>
-        <div class="section_6_box" style="background-image:url(images/section_6_3.png);">
-            <img src="images/logo_bintang.png" alt="">
+        <div class="section_6_box" style="background-image:url(images/section_6_3.webp);">
+            <img src="images/logo_rizqita_third.png" alt="">
         </div>
     </div>
     <div class="section_7">
-        <h1>Bintang Plafon Pvc</h1>
-        <p>Kami adalah mitra terpercaya dalam mewujudkan impian anda memiliki hunian idaman. Kami juga memiliki beberapa distributor di berbagai daerah, 
-            Dengan tim ahli dan pengalaman bertahun-tahun, kami menawarkan solusi konstruksi yang inovatif, berkualitas tinggi, dan sesuai dengan kebutuhan 
-            dan anggaran Anda. Mulai dari perencanaan hingga penyelesaian, kami berkomitmen untuk memberikan layanan yang transparan, profesional, dan tepat waktu.
-            Jadikan rumah atau proyek properti Anda sebagai bukti keunggulan kami 
-            dalam menciptakan lingkungan hunian yang aman, nyaman, dan estetis.
-            Bergabunglah dengan kami sekarang dan wujudkan impian Anda bersama kami!!! </p>
+        <h1>Rizqita Jaya Gemilang Pusat</h1>
+        <p>Kami berkomitmen pada produk berkualitas tinggi yang memenuhi standar industri, didukung layanan pelanggan yang ramah dan profesional. Tim ahli kami siap membantu Anda memilih produk yang tepat, dengan dukungan purna jual untuk pemasangan, perawatan, dan konsultasi. </p>
+        <p>Layanan pengiriman kami menjamin produk Anda sampai dengan aman dan tepat waktu, didukung jasa pemasangan oleh tim berpengalaman untuk pekerjaan yang cepat dan rapi.</p>
+        <p>Kami bangga melayani Karawang dan sekitarnya, siap memberikan produk dan layanan terbaik untuk menciptakan ruangan yang indah dan nyaman bagi Anda. Untuk informasi lebih lanjut atau mengatur janji temu, silakan hubungi kami</p>
     </div>
     <div class="section_all">
         <div class="section_8">
@@ -216,8 +229,8 @@
             </div>
         </div>
         <div class="section_9">
-            <h1>Peluang Kerjasama Dengan Bintang Plafon</h1>
-            <p>Bintang Plafon telah menjalin kemitraan dengan distributor-distributor terpercaya di berbagai kota besar di Indonesia. </br>
+            <h1>Peluang Kerjasama Dengan Rizqita Jaya Gemilang</h1>
+            <p>Rizqita Jaya Gemilang telah menjalin kemitraan dengan distributor-distributor terpercaya di berbagai kota besar di Indonesia. </br>
                 Kami menempatkan produk-produk unggulan sebagai prioritas, memastikan para mitra mendapatkan permintaan pasar yang stabil dan menguntungkan.</br>
                 Dengan beragam produk yang selalu mengikuti perkembangan pasar, kami membantu mengembangkan usaha mitra-mitra kami,</br>
                 memberikan akses kepada mereka pada produk-produk kekinian yang memiliki daya tarik tinggi.</br>
@@ -225,26 +238,26 @@
                 serta memastikan kecepatan pengiriman yang optimal guna mendukung peningkatan distribusi dan penjualan. </br>
                 Pengiriman Barang ke distributor kami dijamin dalam kondisi yang rapi, aman, dan tepat waktu.</br>
                 Jangan lewatkan peluang ini, Segera daftar menjadi bagian bintang plafon sekarang dan raih kesuksesan bersama kami.</p>
-            <p>Join Distributor dan Informasi Lebih Lanjut: </br>www.bintangplafonpvcgrup.com</p>
+            <p>Join Distributor dan Informasi Lebih Lanjut: </br>www.rizqitajayagemilangpusat.com</p>
         </div>
         <div class="section_category">
             <a href="#">
-                <div class="section_category_box" style="background-image:url(images/bg_category_1.png)">
+                <div class="section_category_box" style="background-image:url(images/bg_category_1.webp)">
                     <h3>Plafon Pvc</h3>
                 </div>
             </a>
             <a href="#">
-                <div class="section_category_box" style="background-image:url(images/bg_category_2.png)">
+                <div class="section_category_box" style="background-image:url(images/bg_category_2.webp)">
                     <h3>List Pvc</h3>
                 </div>
             </a>
             <a href="#">
-                <div class="section_category_box" style="background-image:url(images/bg_category_3.png)">
+                <div class="section_category_box" style="background-image:url(images/bg_category_3.webp)">
                     <h3>Ornamen Pvc</h3>
                 </div>
             </a>
             <a href="#">
-                <div class="section_category_box" style="background-image:url(images/bg_category_4.png)">
+                <div class="section_category_box" style="background-image:url(images/bg_category_4.webp)">
                     <h3>Fitting Ornamen Pvc</h3>
                 </div>
             </a>
@@ -307,26 +320,10 @@
         </div>
         <div class="section_about" id="tentang-kami">
             <div class="section_about_content">
-                <img src="images/logo_bintang_second.png" alt="">
+                <img src="images/logo_rizqita.png" alt="">
                 <h3>Tentang Kami</h3>
-                <span>Bintang Plafon Pvc Group</span>
-                <p>BINTANG PLAFON  merupakan perusahaan yang bergerak di bidang plafon PVC,
-                    fokus pada pengembangan, produksi, dan distribusi produk plafon berbahan dasar PVC
-                    (Polyvinyl Chloride).
-                    Dengan komitmen pada kualitas dan inovasi, 
-                    perusahaan ini memposisikan dirinya sebagai pemain kunci dalam industri plafon PVC.
-                    </br>
-                    </br>
-                    BINTANG PLAFON mengadopsi teknologi terkini dalam produksi plafon PVC 
-                    untuk memastikan kualitas terbaik dan efisiensi produksi.
-                    Berinvestasi dalam penelitian dan pengembangan untuk 
-                    terus menghadirkan inovasi dalam desain, warna, dan tekstur.
-                    kami telah melayani ratusan order setiap tahunya untuk membantu berbagai macam proyek-proyek 
-                    atau industri lainya.
-                    </br>
-                    </br>
-                    Semoga BINTANG PLAFON bisa menjadi partner yang tepat untuk
-                    melayani kebutuhan usaha anda.</p>
+                <span>PT. Rizqita Jaya Gemilang Pusat</span>
+                <p>Selamat datang di Rizqita Jaya Gemilang, distributor utama Plafon PVC dan Atap UPVC di Cilamaya Karawang. Kami berdedikasi untuk menyediakan solusi interior berkualitas tinggi untuk rumah dan bangunan komersial Anda. Dengan beragam pilihan produk PVC, kami siap memenuhi kebutuhan renovasi Anda dengan layanan yang tulus dan profesional.</p>
             </div>
             <div class="section_about_layout">
                 <div class="section_about_box">
@@ -355,8 +352,7 @@
                     <img src="images/menjual.png" alt="">
                     <div class="section_about_box_content">
                         <h5>Kami Menjual</h5>
-                        <p>Plafon PVC, List PVC, Ornamen PVC, 
-                        Fitting Ornamen</p>
+                        <p>Plafon PVC - Wall Panel WPC - Atap UPVC</p>
                     </div>
                 </div>
             </div>
@@ -365,27 +361,27 @@
             <div class="section_visi_misi_content">
                 <div class="section_visi_misi_box">
                     <h1>Visi Perusahaan</h1>
-                    <p>Menjadi perusahaan terdepan dalam inovasi dan produksi plafon PVC berkualitas 
-                        tinggi yang ramah lingkungan, memberikan solusi estetika dan fungsional bagi setiap
-                        ruang di Indonesia serta pasar internasional.</p>
+                    <p>Menjadi penyedia produk Plafon PVC berkualitas tinggi di Cilamaya secara khusus hingga Karawang pada umumnya, meningkatkan estetika dan kualitas interior rumah serta bangunan komersial.</p>
                 </div>
                 <div class="section_visi_misi_box">
                     <h1>Misi Perusahaan</h1>
-                    <p>
-                    Menghasilkan produk plafon PVC yang berkualitas tinggi dengan menggunakan
-                    teknologi mutakhir dan bahan-bahan yang ramah lingkungan.
-                    Menyediakan layanan pelanggan yang unggul dengan memastikan 
-                    kepuasan dan kebutuhan konsumen menjadi prioritas utama.
-                    Membangun kemitraan yang kuat dengan distributor, kontraktor,
-                    dan arsitek untuk memperluas jangkauan pasar.
-                    Berinovasi secara terus-menerus untuk menciptakan desain dan produk yang mengikuti tren arsitektur modern.
-                    Berkontribusi dalam menjaga kelestarian lingkungan dengan menerapkan proses produksi yang efisien dan berkelanjutan.
-                    </p>
+                    <ul>
+                        <li>Menawarkan produk Plafon PVC berkualitas dengan desain dan warna yang menarik.</li>
+                        <li>Memberikan layanan pelanggan yang cepat, ramah, dan profesional.</li>
+                        <li>Menyediakan jasa pemasangan yang handal dan berkualitas.</li>
+                        <li>Membangun dan menjaga hubungan jangka panjang dengan pelanggan dan mitra.</li>
+                        <li>Terus mengembangkan tim kami untuk menyediakan solusi terbaik.</li>
+                    </ul>
                 </div>
                 <div class="section_visi_misi_box">
                     <h1>Value</h1>
-                    <p>Value: Berorientasi lokasi dengan usaha usaha kecil. dan dapat memberikan 
-                    pendekatan yang lebih personal dan memberikan nilai terbaik bagi para pelanggan kami.</p>
+                    <ul>
+                        <li><b>Kualitas:</b> Hanya menyediakan produk PVC yang tahan lama dan estetis.</li>
+                        <li><b>Keandalan:</b> Komitmen pada layanan yang andal dan tepat waktu.</li>
+                        <li><b>Profesionalisme:</b> Tim ahli yang berpengalaman dan profesional.</li>
+                        <li><b>Kepuasan Pelanggan:</b> Berusaha maksimal untuk kepuasan pelanggan.</li>
+                        <li><b>Inovasi:</b> Berinovasi dan mengikuti perkembangan industri.</li>
+                    </ul>
                 </div>
             </div>
             <div class="section_visi_misi_image">
@@ -394,15 +390,16 @@
         </div>
         <div class="section_contact" id="hubungi">
             <div class="section_contact_maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1080.8471092975178!2d106.82555497811362!3d-6.449891792093245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ea1ba8ccb753%3A0x7e917fa48899b0a3!2sTB%20Sogi%20Building%20Material%20Shop!5e0!3m2!1sen!2sid!4v1729413994722!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15864.32039509025!2d107.579117!3d-6.253177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69677e75ed6a39%3A0x9db335ba3e07ba88!2sDistributor%20Plafon%20PVC%20-%20Atap%20UPVC!5e0!3m2!1sid!2sid!4v1740471134470!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
             <div class="section_contact_content">
                 <h3>Kontak Perusahaan</h3>
                 <div class="section_contact_alamat">
-                    <h1>Bintang Plafon Pvc Grup</h1>
-                    <p>Jl. Raya Kp. Sawah, Jatimulya, Kec. Cilodong, Kota Depok, Jawa Barat 16413</p>
+                    <h1>Rizqita Jaya Gemilang Pusat</h1>
+                    <p>Jl. Kedung Asem Blok Mushollah No.75, RT.8/RW.4, Mekarmaya, Kec. Cilamaya Wetan, Karawang, Jawa Barat 41384</p>
                 </div>
-                <a href="#">
+        
+                @if($hotline)
+                <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}" target="_blank">
                     <div class="section_contact_whatsapp">
                         <img src="images/hotline.svg" alt="">
                         <div class="section_contact_detail">
@@ -410,8 +407,9 @@
                         </div>
                     </div>
                 </a>
+                @endif
                 <div class="section_contact_logo">
-                    <img src="images/logo_bintang.png" alt="">
+                    <img src="images/logo_rizqita_third.png" alt="">
                 </div>
             </div>
         </div>
@@ -447,19 +445,19 @@
             <div class="section_promotion_layout section_promotion_layout_hasil">
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/modern_img.png" alt="">
+                        <img src="images/modern_img.webp" alt="">
                     </div>
                     <h1>Modern</h1>
                 </div>
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/minimalis_img.png" alt="">
+                        <img src="images/minimalis_img.webp" alt="">
                     </div>
                     <h1>Minimalis</h1>
                 </div>
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/classic_img.png" alt="">
+                        <img src="images/classic_img.webp" alt="">
                     </div>
                     <h1>Classic</h1>
                 </div>
@@ -468,7 +466,7 @@
         <div class="section_cta">
             <div class="section_cta_box">
                 <div class="section_cta_box_content">
-                    <h1>Kini Bintang plafon telah menjangkau ke beberapa kota</h1>
+                    <h1>Kini Rizqita Jaya Gemilang telah menjangkau ke beberapa kota</h1>
                     <div class="section_cta_box_btn">
                         <a href="#"><button>Selengkapnya</button></a>
                         <img src="images/logo_bintang.png" alt="">
@@ -481,21 +479,19 @@
     <div class="footer_layout">
         <div class="footer">
             <div class="logo_footer">
-                <img src="images/logo_bintang_second.png" alt="">
+                <img src="images/logo_rizqita.png" alt="">
             </div>
             <div class="office">
                 <h5>Head Office :</h5>
-                <p>Jl. Raya Kp. Sawah, Jatimulya, 
-                Kec. Cilodong, Kota Depok, 
-                Jawa Barat 16413
+                <p>Jl. Kedung Asem Blok Mushollah No.75, RT.8/RW.4, Mekarmaya, Kec. Cilamaya Wetan, Karawang, Jawa Barat 41384
                 </p>
-                <a href="#">fax </br>bintangplafonpvcgroup.com</a>
+                <a href="#">fax </br>rizqitajayagemilangpusat.com</a>
             </div>
             <div class="produk_footer">
                 <h5>Produk</h5>
                 <ul>
-                    <li><a href="#">Bintang Plafon Interior</a></li>
-                    <li><a href="#">Bintang Plafon Material</a></li>
+                    <li><a href="#">Rizqita Jaya Gemilang Interior</a></li>
+                    <li><a href="#">Rizqita Jaya Gemilang Material</a></li>
                 </ul>
             </div>
             <div class="produk_footer">

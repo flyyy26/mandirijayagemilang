@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Whatsapp;
 use App\Models\Hotline;
-use App\Models\Product;
 
 class WhatsappController extends Controller
 {
@@ -49,11 +48,6 @@ class WhatsappController extends Controller
     {
         // Find the WhatsApp entry by ID
         $whatsapp = Whatsapp::findOrFail($id);
-        
-        // Set the whatsapp_id and whatsapp_name to null in any products associated with this WhatsApp entry
-        Product::where('whatsapp_id', $id)->update([
-            'whatsapp_id' => null,
-        ]);
         
         // Delete the WhatsApp entry
         $whatsapp->delete();

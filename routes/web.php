@@ -17,6 +17,7 @@ use App\Models\Product;
 use App\Models\Whatsapp;
 use App\Models\Category;
 use App\Models\Hotline;
+use App\Models\Social;
 
 Route::get('/whatsapp-numbers/{product}', function (Product $product) {
     return response()->json($product->whatsapps); // Assuming the relationship is defined in the Product model
@@ -31,9 +32,10 @@ Route::get('/', function () {
 
     // Fetch WhatsApp numbers and the first hotline entry
     $whatsapps = WhatsApp::all();
+    $socials = Social::all();
     $hotline = Hotline::first(); // Get only the first hotline
 
-    return view('beranda', compact('products', 'productsOrnamen', 'categories', 'whatsapps', 'hotline'));
+    return view('beranda', compact('products', 'productsOrnamen', 'categories', 'whatsapps', 'hotline', 'socials'));
 });
 
 
@@ -91,6 +93,16 @@ use App\Http\Controllers\WhatsappController;
     Route::put('/admin/whatsapp/{id}', [WhatsappController::class, 'update'])->name('admin.whatsapp.update');
     Route::get('/admin/whatsapps/search', [WhatsappController::class, 'search'])->name('admin.whatsapp.search');
     Route::get('/admin/whatsapps', [WhatsappController::class, 'index'])->name('admin.whatsapp.index');
+
+use App\Http\Controllers\SocialController;
+// Route untuk halaman input kategori
+    Route::get('/admin/social/create', [SocialController::class, 'create'])->name('admin.social.create');
+    Route::post('/admin/social', [SocialController::class, 'store'])->name('admin.social.store');
+    Route::delete('/admin/social/{id}', [SocialController::class, 'destroy'])->name('admin.social.destroy');
+    Route::get('/admin/social/{id}/edit', [SocialController::class, 'edit'])->name('admin.social.edit');
+    Route::put('/admin/social/{id}', [SocialController::class, 'update'])->name('admin.social.update');
+    Route::get('/admin/social/search', [SocialController::class, 'search'])->name('admin.social.search');
+    Route::get('/admin/social', [SocialController::class, 'index'])->name('admin.social.index');
 
 use App\Http\Controllers\HotlineController;
     Route::get('/admin/hotline/create', [HotlineController::class, 'create'])->name('admin.hotline.create');

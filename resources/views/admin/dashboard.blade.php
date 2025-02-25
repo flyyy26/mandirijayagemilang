@@ -1,18 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    @vite('resources/css/app.css')
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-        *{
-            font-family: "Rubik", sans-serif;
-        }
-    </style>
-</head> -->
+
 @extends('layouts.app')
 
 @section('title', 'Dashboard')

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="https://cdn.tiny.cloud/1/f0qff2j87jgv24lrb8m0hd4yuglweewk56pa79tykafgtc6g/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-  @vite('resources/css/app.css')
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
       @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
       *{
@@ -54,9 +54,11 @@
                 
                 <!-- Menu Kategori -->
                 <a href="{{ route('admin.category.create') }}" class="{{ Route::currentRouteName() == 'admin.category.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Kategori</a>
+
+                <a href="{{ route('admin.social.create') }}" class="{{ Route::currentRouteName() == 'admin.social.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Sosial Media</a>
                 
                 <!-- Menu Nomor Whatsapp -->
-                <a href="{{ route('admin.whatsapp.create') }}" class="{{ Route::currentRouteName() == 'admin.whatsapp' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Nomor Whatsapp</a>
+                <a href="{{ route('admin.whatsapp.create') }}" class="{{ Route::currentRouteName() == 'admin.whatsapp.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Nomor Whatsapp</a>
             </div>
         </div>
       </div>
@@ -65,7 +67,12 @@
         <!-- Profile dropdown -->
         <div class="relative flex items-center ml-3 gap-6">
           <p class="text-sm text-white">Hello, {{ Auth::user()->name }}!</p>
-          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 bg-red-700 hover:text-white flex items-center gap-2">Keluar Dashboard <iconify-icon icon="ri:logout-box-r-fill"></iconify-icon></a>
+          <form method="POST" action="{{ route('admin.logout') }}" class="inline">
+          @csrf
+          <button type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 bg-red-700 hover:text-white flex items-center gap-2">
+              Keluar Dashboard <iconify-icon icon="ri:logout-box-r-fill"></iconify-icon>
+          </button>
+            </form>
         </div>
       </div>
     </div>
