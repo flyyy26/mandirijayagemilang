@@ -48,6 +48,8 @@
             <div class="flex space-x-4">
                 <!-- Menu Dashboard -->
                 <a href="{{ route('admin.dashboard') }}" class="{{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+
+                <a href="{{ route('admin.slideshow.create') }}" class="{{ Route::currentRouteName() == 'admin.slideshow.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Slideshow</a>
                 
                 <!-- Menu Produk -->
                 <a href="{{ route('admin.products.create') }}" class="{{ Route::currentRouteName() == 'admin.products.create' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Produk</a>

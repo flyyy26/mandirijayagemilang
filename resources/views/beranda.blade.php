@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bintang Plafon PVC Group</title>
+    <link rel="icon" href="https://ptrizqitajayagemilangpusat.com/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @media(max-width:768px){
+            .tab button.active {
+                background-color: #088A00;
+                color: #fff;
+            }
+            .section_visi_misi_box ul {
+                margin-left: 4vw;
+            }
+            .section_visi_misi_box ul li{
+                font-size:3vw;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -37,8 +52,6 @@
                             </a>
                         @endforeach
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -63,96 +76,53 @@
     <div class="section_1">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="section_1_text">
-                        <h1>Distributor PVC Berkualitas</h1>
-                        <p>Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
+                @foreach($slideshows as $slideshow)
+                    <div class="swiper-slide">
+                        <a href="{{ $slideshow->link ?? '#' }}" rel="noopener noreferrer" class="slideshow">
+                            <img src="{{ asset('storage/' . $slideshow->image) }}" alt="{{ $slideshow->heading }}" loading="lazy">
+                        </a>
+                        <div class="slideshow_mobile">
+                            <a href="{{ $slideshow->link ?? '#' }}" rel="noopener noreferrer">
+                                <img src="{{ asset('storage/' . $slideshow->image_mobile) }}" alt="{{ $slideshow->heading }}" loading="lazy">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="section_1_text">
-                        <h1>Plafon PVC Terbaik</h1>
-                        <p>Kualitas, Estetika, dan Ketahanan!</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-        <img src="images/section_1_img.webp" alt="Bintang Plafon PVC Group" class="section_1_img">
-    </div>
-    <div class="section_2">
-        <div class="section_2_content">
-            <h1>Masih Bingung Mau <br/><font>Ganti plafon merk apa?</font></h1>
-            <p>Rizqita Jaya Gemilang adalah <br/>
-            Solusi Tepat Untuk Plafon  & Interior Rumah Anda</p>
-        </div>
-        @if($hotline)
-            <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
-                <div class="hotline_box">
-                    <p>Hubungi hotline service <br/>
-                    pada tombol kontak</p>
-                    <img src="images/hotline.svg" alt="Hotline Image">
-                </div>
-            </a>
-        @endif
-
-        <img src="images/section_2_img.webp" alt="" class="section_2_img">
-    </div>
-    <div class="section_3">
-        <div class="section_3_content">
-            <img src="images/logo_rizqita_third.png" alt="" class="section_3_logo">
-            <p>Keunggulan Produk:</p>
-            <p>Kami percaya setiap ruangan berpotensi menciptakan suasana yang indah dan nyaman. Oleh karena itu, kami menawarkan rangkaian produk unggulan untuk memberikan sentuhan khusus pada ruangan Anda, menggabungkan kualitas, keindahan, dan inovasi.</p>
-            <img src="images/section_3_icon.png" alt="" class="section_3_icon">
-        </div>
-        <div class="section_3_image">
-            <img src="images/section_3_img.webp" alt="">
-            <img src="images/section_3_material.webp" alt="" class="section_3_material">
+            <div class="swiper-pagination"></div>
         </div>
     </div>
-    <div class="section_4">
-        <div class="section_4_content">
-            <img src="images/logo_rizqita_third.png" alt="">
-            <p>Sebuah ornamen berperan penting bagi lampu hias ruangan. Ada bayak jenis dan model Ornamen, </br>
-            Ornamen jenis ini didesain unik dan menarik sehingga cocok digunakan </br>
-            sebagai penunjang penampilan interior ruangan Anda. ornamen akan memberikan 
-            kesan mewah dan elegan sehingga cocok digunakan untuk kebutuhan komersial. 
-            Pemasangan ornamen cukup mudah dan bisa digunakan untuk masa pakai yang lama.</p>
-            <img src="images/section_3_icon.png" alt="" class="section_3_icon section_3_icon_sc">
-        </div>
-        <img src="images/ornamen_1.webp" alt="" class="ornamen_1">
-        <img src="images/ornamen_2.webp" alt="" class="ornamen_2">
-        <img src="images/ornamen_3.webp" alt="" class="ornamen_3">
-    </div>
-    <div class="section_5">
-        <div class="section_5_content">
-            <img src="images/logo_rizqita_third.png" alt="">
-            <p>LIS PLAFON PVC</br>
-            Plafon atau langit-langit adalah permukaan interior atas yang berhubungan </br>
-            dengan bagian atas sebuah ruangan. Umumnya, </br>
-            langit-langit bukan unsur struktural, </br>
-            melainkan permukaan yang menutupi lantai struktur atap di atas. </br>
-            Pada pemasangan plafoan,</br>
-            biasanya dilengkapi dengan lis plafon </br>
-            yang berfungsi sebagai penghubung antara permukaan plafon dan dinding
-            yang saling menempel. Tanpa adanya lis plafon, 
-            area plafon tidak hanya terlihat biasa saja 
-            tapi juga akan mudah retak dan runtuh.
-            </p>
-            <img src="images/section_3_icon.png" alt="" class="section_3_icon section_3_icon_sc">
-        </div>
-        <img src="images/lis_ornamen.webp" alt="" class="lis_ornamen">
-    </div>
+    @if($hotline)
+        <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
+            <div class="hotline_box">
+                <p>Hubungi hotline service <br/>
+                pada tombol kontak</p>
+                <img src="images/hotline.svg" alt="Hotline Image">
+            </div>
+        </a>
+    @endif
+    
     <div class="section_6">
-        <div class="section_6_box" style="background-image:url(images/section_6_1.webp);">
-            <img src="images/logo_rizqita_third.png" alt="">
+        <div class="section_6_box" style="background:url(images/section_6_1.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;">
+            <h1>Plafon PVC</h1>
+            <span>Rizqita Jaya Gemilang</span>
+            <div class="section_6_box_content">
+                <p>Plafon PVC kami - Elegan, modern, dan mudah dirawat! Tersedia dalam beragam motif untuk mempercantik ruangan Anda.</p>
+            </div>
         </div>
-        <div class="section_6_box" style="background-image:url(images/section_6_2.webp);">
-            <img src="images/logo_rizqita_third.png" alt="">
+        <div class="section_6_box" style="background:url(images/section_6_2.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;;">
+            <h1>Wall Panel WPC</h1>
+            <span>Rizqita Jaya Gemilang</span>
+            <div class="section_6_box_content">
+                <p>Wall Panel WPC – Tahan lama, elegan, dan mudah dipasang! Pilihan sempurna untuk dinding yang stylish dan modern.</p>
+            </div>
         </div>
-        <div class="section_6_box" style="background-image:url(images/section_6_3.webp);">
-            <img src="images/logo_rizqita_third.png" alt="">
+        <div class="section_6_box" style="background:url(images/section_6_3.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;;">
+            <h1>Atap UPVC</h1>
+            <span>Rizqita Jaya Gemilang</span>
+            <div class="section_6_box_content">
+                <p>Atap UPVC – Kuat, tahan cuaca, dan meredam panas! <br/>Solusi atap nyaman dan tahan lama.</p>
+            </div>
         </div>
     </div>
     <div class="section_7">
@@ -162,6 +132,32 @@
         <p>Kami bangga melayani Karawang dan sekitarnya, siap memberikan produk dan layanan terbaik untuk menciptakan ruangan yang indah dan nyaman bagi Anda. Untuk informasi lebih lanjut atau mengatur janji temu, silakan hubungi kami</p>
     </div>
     <div class="section_all">
+        <div class="section_video">
+        @if ($videos)
+            @php
+                function getYouTubeVideoId($url) {
+                    preg_match('/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|.*v\/|.*watch\?v=))([\w-]+)/', $url, $matches);
+                    return $matches[1] ?? null;
+                }
+                $videoId = getYouTubeVideoId($videos->video);
+            @endphp
+
+            @if ($videoId)
+                <iframe src="https://www.youtube.com/embed/{{ $videoId }}" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            @else
+                <p>Link video tidak valid.</p>
+            @endif
+        @else
+            <p>Belum ada video yang tersedia.</p>
+        @endif
+
+        </div>
         <div class="section_8">
             <div class="section_8_heading">
                 <h1><div class="square"></div>Plafon PVC</h1>
@@ -581,15 +577,15 @@
     </script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-        loop:true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+            loop:true,
+            // autoplay: {
+            //     delay: 2500,
+            //     disableOnInteraction: false,
+            // },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
         });
     </script>
     

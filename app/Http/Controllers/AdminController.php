@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Whatsapp;
+use App\Models\Social;
+use App\Models\Slideshow;
 
 class AdminController extends Controller
 {
@@ -17,7 +19,9 @@ class AdminController extends Controller
         $productCount = Product::count();
         $categoryCount = Category::count();
         $whatsappCount = Whatsapp::count();
-        return view('admin.dashboard', compact('products', 'categories', 'productCount', 'categoryCount', 'whatsappCount')); // Pass products to the view
+        $socialCount = Social::count();
+        $slideCount = Slideshow::count();
+        return view('admin.dashboard', compact('products', 'categories', 'productCount', 'categoryCount', 'whatsappCount', 'socialCount', 'slideCount')); // Pass products to the view
     }
     public function showLoginForm()
     {

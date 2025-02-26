@@ -67,6 +67,7 @@
     background-color: white;
     top: 50%;
     transform: translateY(-50%);
+    display: block;
 }
 .contact_nav_box:first-child{
     padding-left: 0;
@@ -124,24 +125,16 @@
 }
 .section_1{
     width: 100%;
-    height: 55.7vw;
+    height: max-content;
     position: relative;
-    background-image: url(../images/section_1_bg.webp);
-    background-position: center;
-    background-size: cover;
     display: flex;
     align-items: center;
-    padding: 0 6vw;
-    padding-bottom: 5vw;
-}
-.section_1_img{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 48vw;
 }
 .mySwiper .swiper-slide{
-    padding: 0 5.5vw;
+    padding: 0 0;
+}
+.mySwiper .swiper-slide img{
+    width: 100%;
 }
 .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
     position: absolute;
@@ -156,6 +149,12 @@
     justify-content: center;
     color: white;
 }
+.mySwiper .swiper-pagination{
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 2vw;
+}
 .mySwiper .swiper-button-next:after, .mySwiper .swiper-button-prev:after {
     font-family: swiper-icons;
     font-size: 2vw;
@@ -163,6 +162,26 @@
     letter-spacing: 0;
     font-variant: initial;
     line-height: 1;
+}
+.mySwiper .swiper-pagination-bullet {
+    width: .6vw;
+    height: .6vw;
+    background: var(--swiper-pagination-bullet-inactive-color, #fff);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, .2);
+    margin: 0 .4vw !important;
+    transition: .3s all;
+}
+.mySwiper .swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: white;
+    width: 1vw;
+    height: 1vw;
+}
+.slideshow{
+    display: block;
+}
+.slideshow_mobile{
+    display: none;
 }
 .section_1_text{
     text-align: start;
@@ -459,11 +478,53 @@
     background-size: cover !important;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    border-bottom: 2.7vw solid #088A00;
+    position: relative;
+    padding-bottom: 2.6vw;
+    /* border-bottom: 2.7vw solid #088A00; */
 }
-.section_6_box img{
-    width: 19vw;
+.section_6_box h1{
+    font-size: 2.5vw;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.section_6_box span{
+    font-size: .9vw;
+    letter-spacing: .2vw;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.section_6_box_content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #088A00;
+    text-align: center;
+    padding: .4vw 2.8vw;
+}
+.section_6_box_content p{
+    font-size: .8vw;
+    color: white;
+}
+
+.section_video{
+    width: 100%;
+    height: 48vw;
+    position: relative;
+    margin-bottom: 5vw;
+    border-radius: 1.3vw;
+    overflow: hidden;
+}
+.section_video iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
 }
 
 .section_7{
@@ -1393,8 +1454,54 @@ a{
 
 @media (max-width:768px) {
     .header{
-        padding: 2vw 5vw;
+        padding: 0 0;
         background-color: rgba(0, 0, 0, 0.623);
+    }
+    .header_container{
+        padding: 3vw 7vw;
+    }
+    .nav_top{
+        padding: 2.1vw 5vw;
+    }
+    .contact_nav{
+        display: flex;
+    }
+    .contact_nav_box::after{
+        display: none;
+    }
+    .contact_nav .contact_nav_box{
+        display: none;
+    }
+    .contact_nav .contact_nav_box:nth-child(2){
+        display: flex;
+    }
+    .contact_nav_box{
+        gap: 1vw;
+        padding: 0 2vw;
+    }
+    .contact_nav_box iconify-icon{
+        font-size: 3.4vw;
+    }
+    .contact_nav_box p{
+        font-size: 3vw;
+        letter-spacing: .05vw;
+    }
+    .sosmed_nav{
+        display: flex;
+        gap: 1.8vw;
+        align-items: center;
+    }
+    .sosmed_nav p{
+        font-size: 3vw;
+        letter-spacing: .05vw;
+    }
+    .sosmed_nav_box{
+        display: flex;
+        align-items: center;
+        gap: 2vw;
+    }
+    .sosmed_nav_box iconify-icon{
+        font-size: 3.7vw;
     }
     .hamburger{
         display: block;
@@ -1403,7 +1510,7 @@ a{
         background-color: transparent;
     }
     .hamburger iconify-icon{
-        font-size: 7.5vw;
+        font-size: 7vw;
         color: white;
     }
     .menu_header{
@@ -1417,7 +1524,7 @@ a{
         padding: 8vw 0;
     }
     .logo_header img{
-        width: 40vw;
+        width: 30vw;
     }
     #menuMobilePopup{
         display: flex;
@@ -1442,28 +1549,42 @@ a{
 
 
     .section_1{
-        height: 160vw;
+        height: max-content;
         padding: 0 0;
-        padding-bottom: 65vw;
+        padding-bottom: 0;
     }
     .mySwiper .swiper-slide{
-        padding: 0 13vw;
+        padding: 0 0;
     }
     .mySwiper .swiper-button-next:after, .mySwiper .swiper-button-prev:after {
         font-size: 5vw;
     }
-    .section_1_text{
-        line-height: 1.4;
-        text-align: start;
+    .slideshow{
+        display: none;
     }
-    .section_1_text h1{
-        font-size: 7vw;
+    .slideshow_mobile{
+        display: block;
+        position: relative;
+        width: 100%;
+        /* height: 160vw; */
     }
-    .section_1_text p{
-        font-size: 3.7vw;
+    .slideshow_mobile img{
+        width: 100% !important;
+        height: 190vw;
+        object-fit: cover;
+        object-position: center;
     }
-    .section_1_img{
-        width: 90vw;
+    .mySwiper .swiper-pagination{
+        margin-bottom: 5vw;
+    }
+    .mySwiper .swiper-pagination-bullet {
+        width: 2.3vw;
+        height: 2.3vw;
+        margin: 0 1.1vw !important;
+    }
+    .mySwiper .swiper-pagination-bullet-active {
+        width: 3.8vw;
+        height: 3.8vw;
     }
 
     .section_2{
@@ -1595,11 +1716,27 @@ a{
         margin: 2vw 0;
     }
     .section_6_box{
-        height: 40vw;
-        border-bottom: 2.7vw solid black;
+        height: 48vw;
+        padding-bottom: 8vw;
     }
-    .section_6_box img{
-        width: 48vw;
+    .section_6_box h1{
+        font-size: 6.5vw;
+    }
+    .section_6_box span{
+        font-size: 3vw;
+        letter-spacing: .4vw;
+    }
+    .section_6_box_content{
+        padding: 1.7vw 3.5vw;
+    }
+    .section_6_box_content p{
+        font-size: 2.8vw;
+    }
+
+    .section_video{
+        height: 52vw;
+        margin-bottom: 8vw;
+        border-radius: 2vw;
     }
 
     .section_7{
@@ -1614,6 +1751,7 @@ a{
     }
     .section_7 p{
         font-size: 3vw;
+        margin-bottom: 3vw;
     }
 
     .section_all{

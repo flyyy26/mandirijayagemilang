@@ -18,6 +18,8 @@ use App\Models\Whatsapp;
 use App\Models\Category;
 use App\Models\Hotline;
 use App\Models\Social;
+use App\Models\Slideshow;
+use App\Models\Video;
 
 Route::get('/whatsapp-numbers/{product}', function (Product $product) {
     return response()->json($product->whatsapps); // Assuming the relationship is defined in the Product model
@@ -33,9 +35,11 @@ Route::get('/', function () {
     // Fetch WhatsApp numbers and the first hotline entry
     $whatsapps = WhatsApp::all();
     $socials = Social::all();
+    $slideshows = Slideshow::all();
+    $videos = Video::latest()->first();
     $hotline = Hotline::first(); // Get only the first hotline
 
-    return view('beranda', compact('products', 'productsOrnamen', 'categories', 'whatsapps', 'hotline', 'socials'));
+    return view('beranda', compact('products', 'productsOrnamen', 'categories', 'whatsapps', 'hotline', 'socials', 'slideshows', 'videos'));
 });
 
 
@@ -69,6 +73,16 @@ use App\Http\Controllers\CategoryController;
     Route::put('/admin/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
     Route::get('/admin/categories/search', [CategoryController::class, 'search'])->name('admin.category.search');
     Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+use App\Http\Controllers\SlideshowController;
+
+    Route::get('/admin/slideshow/create', [SlideshowController::class, 'create'])->name('admin.slideshow.create');
+    Route::post('/admin/slideshow/store', [SlideshowController::class, 'store'])->name('admin.slideshow.store');
+    Route::delete('/admin/slideshow/{id}', [SlideshowController::class, 'destroy'])->name('admin.slideshow.destroy');
+    Route::get('/admin/slideshow/{id}/edit', [SlideshowController::class, 'edit'])->name('admin.slideshow.edit');
+    Route::put('/admin/slideshow/{id}', [SlideshowController::class, 'update'])->name('admin.slideshow.update');
+    Route::get('/admin/slideshow/search', [SlideshowController::class, 'search'])->name('admin.slideshow.search');
+    Route::get('/admin/slideshow', [SlideshowController::class, 'index'])->name('admin.slideshow.index');
 
 
 use App\Http\Controllers\ProductController;
@@ -111,3 +125,11 @@ use App\Http\Controllers\HotlineController;
     Route::delete('/admin/hotline/{id}', [HotlineController::class, 'destroy'])->name('admin.hotline.destroy');
     Route::get('/admin/hotline/{id}/edit', [HotlineController::class, 'edit'])->name('admin.hotline.edit');
     Route::put('/admin/hotline/{id}', [HotlineController::class, 'update'])->name('admin.hotline.update');
+
+use App\Http\Controllers\VideoController;
+    Route::get('/admin/video/create', [VideoController::class, 'create'])->name('admin.video.create');
+    Route::post('/admin/video/store', [VideoController::class, 'store'])->name('admin.video.store');
+    Route::get('/admin/video', [VideoController::class, 'index'])->name('admin.video.index');
+    Route::delete('/admin/video/{id}', [VideoController::class, 'destroy'])->name('admin.video.destroy');
+    Route::get('/admin/video/{id}/edit', [VideoController::class, 'edit'])->name('admin.video.edit');
+    Route::put('/admin/video/{id}', [VideoController::class, 'update'])->name('admin.video.update');
