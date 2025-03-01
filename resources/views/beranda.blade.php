@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bintang Plafon PVC Group</title>
+    <title>CV Mandiri Jaya Gemilang</title>
     <link rel="icon" href="https://ptrizqitajayagemilangpusat.com/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -11,8 +11,8 @@
     <style>
         @media(max-width:768px){
             .tab button.active {
-                background-color: #088A00;
-                color: #fff;
+                background-color: #DFDCB1;
+                color:#57897E;
             }
             .section_visi_misi_box ul {
                 margin-left: 4vw;
@@ -30,7 +30,7 @@
                 <div class="contact_nav">
                     <div class="contact_nav_box">
                         <iconify-icon icon="weui:location-outlined"></iconify-icon>
-                        <p> Jl. Kedung Asem, Mekarmaya, Kec. Cilamaya Wetan, Karawang 41384</p>
+                        <p>Pasir Jaya, Cikupa, Tangerang Regency, Banten 15710</p>
                     </div>
                     <div class="contact_nav_box">
                         <iconify-icon icon="mdi-light:phone"></iconify-icon>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="contact_nav_box">
                         <iconify-icon icon="ph:envelope-light"></iconify-icon>
-                        <a href="mailto: ahmadagusindra@gmail.com" target="_blank"><p> ahmadagusindra@gmail.com</p></a>
+                        <a href="mailto: ahmadagusindra@gmail.com" target="_blank"><p> admin@cvmandirijayagemilang.com</p></a>
                     </div>
                 </div>
                 <div class="sosmed_nav">
@@ -57,7 +57,7 @@
         </div>
         <div class="header_container">
             <div class="logo_header">
-                <img src="images/logo_rizqita_second.png" alt="">
+                <img src="images/logo.webp" alt="Logo Mandiri Jaya Gemilang">
             </div>
             <button id="menuToggleButton" class="hamburger" onclick="popupMenuMobile()">
                 <iconify-icon id="menuIcon" icon="radix-icons:hamburger-menu"></iconify-icon>
@@ -93,11 +93,20 @@
         </div>
     </div>
     @if($hotline)
-        <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
+        <!-- <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
             <div class="hotline_box">
                 <p>Hubungi hotline service <br/>
                 pada tombol kontak</p>
                 <img src="images/hotline.svg" alt="Hotline Image">
+            </div>
+        </a> -->
+        
+        <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}">
+            <div class="floating_whatsapp">
+                <div class="text_whatsapp">
+                    <span><font>Butuh</font> Bantuan?</span>
+                </div>
+                <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}" target="blank_"><button>Hubungi Hotline Service <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon></button></a>
             </div>
         </a>
     @endif
@@ -105,31 +114,31 @@
     <div class="section_6">
         <div class="section_6_box" style="background:url(images/section_6_1.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;">
             <h1>Plafon PVC</h1>
-            <span>Rizqita Jaya Gemilang</span>
+            <span>Mandiri Jaya Gemilang</span>
             <div class="section_6_box_content">
                 <p>Plafon PVC kami - Elegan, modern, dan mudah dirawat! Tersedia dalam beragam motif untuk mempercantik ruangan Anda.</p>
             </div>
         </div>
         <div class="section_6_box" style="background:url(images/section_6_2.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;;">
-            <h1>Wall Panel WPC</h1>
-            <span>Rizqita Jaya Gemilang</span>
+            <h1>Kontraktor</h1>
+            <span>Mandiri Jaya Gemilang</span>
             <div class="section_6_box_content">
-                <p>Wall Panel WPC – Tahan lama, elegan, dan mudah dipasang! Pilihan sempurna untuk dinding yang stylish dan modern.</p>
+                <p>Dengan tim profesional dan komitmen terhadap kualitas, kami menghadirkan solusi konstruksi yang inovatif.</p>
             </div>
         </div>
         <div class="section_6_box" style="background:url(images/section_6_3.webp), rgba(255, 255, 255, 0.644); background-blend-mode:overlay;;">
-            <h1>Atap UPVC</h1>
-            <span>Rizqita Jaya Gemilang</span>
+            <h1>Suplier</h1>
+            <span>Mandiri Jaya Gemilang</span>
             <div class="section_6_box_content">
-                <p>Atap UPVC – Kuat, tahan cuaca, dan meredam panas! <br/>Solusi atap nyaman dan tahan lama.</p>
+                <p>Kami memastikan setiap produk yang kami suplai memenuhi standar terbaik untuk mendukung kelancaran proyek Anda.</p>
             </div>
         </div>
     </div>
     <div class="section_7">
-        <h1>Rizqita Jaya Gemilang Pusat</h1>
-        <p>Kami berkomitmen pada produk berkualitas tinggi yang memenuhi standar industri, didukung layanan pelanggan yang ramah dan profesional. Tim ahli kami siap membantu Anda memilih produk yang tepat, dengan dukungan purna jual untuk pemasangan, perawatan, dan konsultasi. </p>
-        <p>Layanan pengiriman kami menjamin produk Anda sampai dengan aman dan tepat waktu, didukung jasa pemasangan oleh tim berpengalaman untuk pekerjaan yang cepat dan rapi.</p>
-        <p>Kami bangga melayani Karawang dan sekitarnya, siap memberikan produk dan layanan terbaik untuk menciptakan ruangan yang indah dan nyaman bagi Anda. Untuk informasi lebih lanjut atau mengatur janji temu, silakan hubungi kami</p>
+        <h1>Mandiri Jaya Gemilang</h1>
+        <p>Kami berkomitmen menyediakan produk berkualitas tinggi yang memenuhi standar industri, didukung oleh layanan pelanggan yang ramah dan profesional. Tim ahli kami siap membantu Anda memilih produk yang tepat, dengan dukungan purna jual mencakup pemasangan, perawatan, dan konsultasi.</p>
+        <p>Layanan pengiriman kami memastikan setiap produk tiba dengan aman dan tepat waktu. Kami juga menyediakan jasa pemasangan oleh tim berpengalaman untuk hasil yang rapi dan sesuai harapan.</p>
+        <p>Berlokasi di Karawang, kami dengan bangga melayani area sekitarnya, menghadirkan produk dan layanan terbaik untuk menciptakan ruangan yang indah dan nyaman bagi Anda. Untuk informasi lebih lanjut atau konsultasi, silakan hubungi kami.</p>
     </div>
     <div class="section_all">
         <div class="section_video">
@@ -203,7 +212,7 @@
                 </div>
             </div>
         </div>
-        <div class="section_8">
+        <!-- <div class="section_8">
             <div class="section_8_heading">
                 <h1><div class="square"></div>Ornamen PVC</h1>
                 <a href="#produk">Lihat Semua</a>
@@ -223,10 +232,10 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        </div> -->
         <div class="section_9">
-            <h1>Peluang Kerjasama Dengan Rizqita Jaya Gemilang</h1>
-            <p>Rizqita Jaya Gemilang telah menjalin kemitraan dengan distributor-distributor terpercaya di berbagai kota besar di Indonesia. </br>
+            <h1>Peluang Kerjasama Dengan Mandiri Jaya Gemilang</h1>
+            <p>Mandiri Jaya Gemilang telah menjalin kemitraan dengan distributor-distributor terpercaya di berbagai kota besar di Indonesia. </br>
                 Kami menempatkan produk-produk unggulan sebagai prioritas, memastikan para mitra mendapatkan permintaan pasar yang stabil dan menguntungkan.</br>
                 Dengan beragam produk yang selalu mengikuti perkembangan pasar, kami membantu mengembangkan usaha mitra-mitra kami,</br>
                 memberikan akses kepada mereka pada produk-produk kekinian yang memiliki daya tarik tinggi.</br>
@@ -234,7 +243,7 @@
                 serta memastikan kecepatan pengiriman yang optimal guna mendukung peningkatan distribusi dan penjualan. </br>
                 Pengiriman Barang ke distributor kami dijamin dalam kondisi yang rapi, aman, dan tepat waktu.</br>
                 Jangan lewatkan peluang ini, Segera daftar menjadi bagian bintang plafon sekarang dan raih kesuksesan bersama kami.</p>
-            <p>Join Distributor dan Informasi Lebih Lanjut: </br>www.rizqitajayagemilangpusat.com</p>
+            <p>Join Distributor dan Informasi Lebih Lanjut: </br>www.cvmandirijayagemilang.com</p>
         </div>
         <div class="section_category">
             <a href="#">
@@ -316,10 +325,11 @@
         </div>
         <div class="section_about" id="tentang-kami">
             <div class="section_about_content">
-                <img src="images/logo_rizqita.png" alt="">
+                <img src="images/logo_mandiri.webp" alt="">
                 <h3>Tentang Kami</h3>
-                <span>PT. Rizqita Jaya Gemilang Pusat</span>
-                <p>Selamat datang di Rizqita Jaya Gemilang, distributor utama Plafon PVC dan Atap UPVC di Cilamaya Karawang. Kami berdedikasi untuk menyediakan solusi interior berkualitas tinggi untuk rumah dan bangunan komersial Anda. Dengan beragam pilihan produk PVC, kami siap memenuhi kebutuhan renovasi Anda dengan layanan yang tulus dan profesional.</p>
+                <span>CV. Mandiri Jaya Gemilang</span>
+                <p>Selamat datang di CV. Mandiri Jaya Gemilang, mitra terpercaya dalam penyediaan Plafon PVC, kontraktor & suplier. Kami berkomitmen menghadirkan solusi interior berkualitas tinggi untuk hunian dan bangunan komersial Anda.</p>
+                <p>Dengan berbagai pilihan produk PVC yang inovatif dan tahan lama, kami siap memenuhi kebutuhan renovasi serta pembangunan Anda. Didukung oleh layanan yang profesional dan tulus, kami memastikan setiap produk yang kami suplai memberikan kenyamanan, keindahan, dan ketahanan terbaik untuk properti Anda.</p>
             </div>
             <div class="section_about_layout">
                 <div class="section_about_box">
@@ -347,8 +357,8 @@
                 <div class="section_about_box">
                     <img src="images/menjual.png" alt="">
                     <div class="section_about_box_content">
-                        <h5>Kami Menjual</h5>
-                        <p>Plafon PVC - Wall Panel WPC - Atap UPVC</p>
+                        <h5>Kami Menyediakan</h5>
+                        <p>Plafon PVC - Kontraktor - Suplier</p>
                     </div>
                 </div>
             </div>
@@ -357,16 +367,16 @@
             <div class="section_visi_misi_content">
                 <div class="section_visi_misi_box">
                     <h1>Visi Perusahaan</h1>
-                    <p>Menjadi penyedia produk Plafon PVC berkualitas tinggi di Cilamaya secara khusus hingga Karawang pada umumnya, meningkatkan estetika dan kualitas interior rumah serta bangunan komersial.</p>
+                    <p>Menjadi penyedia utama solusi bahan bangunan berkualitas tinggi yang inovatif, tahan lama, dan ramah lingkungan, serta menjadi mitra terpercaya dalam menciptakan hunian dan bangunan yang nyaman serta estetis.</p>
                 </div>
                 <div class="section_visi_misi_box">
                     <h1>Misi Perusahaan</h1>
                     <ul>
-                        <li>Menawarkan produk Plafon PVC berkualitas dengan desain dan warna yang menarik.</li>
-                        <li>Memberikan layanan pelanggan yang cepat, ramah, dan profesional.</li>
-                        <li>Menyediakan jasa pemasangan yang handal dan berkualitas.</li>
-                        <li>Membangun dan menjaga hubungan jangka panjang dengan pelanggan dan mitra.</li>
-                        <li>Terus mengembangkan tim kami untuk menyediakan solusi terbaik.</li>
+                        <li>Menyediakan produk berkualitas tinggi yang memenuhi standar industri dan kebutuhan pelanggan.</li>
+                        <li>Memberikan layanan profesional dan terpercaya dengan fokus pada kepuasan pelanggan.</li>
+                        <li>Berinovasi dalam menghadirkan solusi bahan bangunan yang modern dan berkelanjutan.</li>
+                        <li>Membangun hubungan jangka panjang dengan pelanggan dan mitra bisnis berdasarkan kepercayaan dan integritas.</li>
+                        <li>Berkontribusi pada perkembangan industri konstruksi di Indonesia dengan menyediakan produk yang efisien dan tahan lama.</li>
                     </ul>
                 </div>
                 <div class="section_visi_misi_box">
@@ -381,17 +391,18 @@
                 </div>
             </div>
             <div class="section_visi_misi_image">
-                <img src="images/logo_blue_hd.png" alt="">
+                <img src="images/logo_blue_hd.webp" alt="">
             </div>
         </div>
         <div class="section_contact" id="hubungi">
             <div class="section_contact_maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15864.32039509025!2d107.579117!3d-6.253177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69677e75ed6a39%3A0x9db335ba3e07ba88!2sDistributor%20Plafon%20PVC%20-%20Atap%20UPVC!5e0!3m2!1sid!2sid!4v1740471134470!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.501306040001!2d106.52409897603737!3d-6.19739636071578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42009b17dfd511%3A0x4dd5b58c5784d31e!2sTB.%20Jaya%20Mandiri!5e0!3m2!1sen!2sid!4v1740851422975!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
             <div class="section_contact_content">
                 <h3>Kontak Perusahaan</h3>
                 <div class="section_contact_alamat">
-                    <h1>Rizqita Jaya Gemilang Pusat</h1>
-                    <p>Jl. Kedung Asem Blok Mushollah No.75, RT.8/RW.4, Mekarmaya, Kec. Cilamaya Wetan, Karawang, Jawa Barat 41384</p>
+                    <h1>Mandiri Jaya Gemilang</h1>
+                    <p>Pasir Jaya, Cikupa, Tangerang Regency, Banten 15710</p>
                 </div>
         
                 @if($hotline)
@@ -405,7 +416,7 @@
                 </a>
                 @endif
                 <div class="section_contact_logo">
-                    <img src="images/logo_rizqita_third.png" alt="">
+                    <img src="images/logo.webp" alt="">
                 </div>
             </div>
         </div>
@@ -462,9 +473,9 @@
         <div class="section_cta">
             <div class="section_cta_box">
                 <div class="section_cta_box_content">
-                    <h1>Kini Rizqita Jaya Gemilang telah menjangkau ke beberapa kota</h1>
+                    <h1>Kini Mandiri Jaya Gemilang telah menjangkau ke beberapa kota</h1>
                     <div class="section_cta_box_btn">
-                        <a href="#"><button>Selengkapnya</button></a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Mandiri+Jaya+Plafon+Cikupa" target="_blank"><button>Selengkapnya</button></a>
                         <img src="images/logo_bintang.png" alt="">
                     </div>
                 </div>
@@ -475,19 +486,19 @@
     <div class="footer_layout">
         <div class="footer">
             <div class="logo_footer">
-                <img src="images/logo_rizqita.png" alt="">
+                <img src="images/logo_mandiri_third.webp" alt="">
             </div>
             <div class="office">
                 <h5>Head Office :</h5>
-                <p>Jl. Kedung Asem Blok Mushollah No.75, RT.8/RW.4, Mekarmaya, Kec. Cilamaya Wetan, Karawang, Jawa Barat 41384
+                <p>Pasir Jaya, Cikupa, Tangerang Regency, Banten 15710
                 </p>
-                <a href="#">fax </br>rizqitajayagemilangpusat.com</a>
+                <a href="#">fax </br>admin@cvmandirijayagemilang.com</a>
             </div>
             <div class="produk_footer">
                 <h5>Produk</h5>
                 <ul>
-                    <li><a href="#">Rizqita Jaya Gemilang Interior</a></li>
-                    <li><a href="#">Rizqita Jaya Gemilang Material</a></li>
+                    <li><a href="#">Mandiri Jaya Gemilang Interior</a></li>
+                    <li><a href="#">Mandiri Jaya Gemilang Material</a></li>
                 </ul>
             </div>
             <div class="produk_footer">
@@ -609,7 +620,7 @@
 
                 // Check if products exist for the category
                 if (!category || !category.products) {
-                    alert('No products found for this category.');
+                    alert('Produk tidak ditemukan pada kategori ini.');
                     return;
                 }
 
@@ -617,7 +628,7 @@
                 const nextProducts = category.products.slice(currentProducts, currentProducts + 8);
 
                 if (nextProducts.length === 0) {
-                    alert('No more products to load');
+                    alert('Tidak ada lagi Produk');
                     return;
                 }
 
