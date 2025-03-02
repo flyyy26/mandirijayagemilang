@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Mandiri Jaya Gemilang</title>
-    <link rel="icon" href="https://ptrizqitajayagemilangpusat.com/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="https://cvmandirijayagemilang.com/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <style>
+        .office a{
+            font-size: .85vw;
+        }
         @media(max-width:768px){
             .tab button.active {
                 background-color: #DFDCB1;
@@ -20,6 +23,18 @@
             .section_visi_misi_box ul li{
                 font-size:3vw;
             }
+            .logo_header img{
+                width: 45vw;
+            }
+            .header_container {
+                padding: 3vw 4vw;
+            }
+            .office a {
+                margin-top: 2vw;
+                font-size: 2.96vw;
+            }
+
+            
         }
     </style>
 </head>
@@ -57,7 +72,7 @@
         </div>
         <div class="header_container">
             <div class="logo_header">
-                <img src="images/logo.webp" alt="Logo Mandiri Jaya Gemilang">
+                <img src="images/logo.webp" alt="Logo Mandiri Jaya Gemilang" loading="lazy">
             </div>
             <button id="menuToggleButton" class="hamburger" onclick="popupMenuMobile()">
                 <iconify-icon id="menuIcon" icon="radix-icons:hamburger-menu"></iconify-icon>
@@ -177,7 +192,7 @@
                     <div class="section_8_box">
                         <div class="section_8_image">
                             <a href="#">
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" loading="lazy">
                             </a>
                         </div>
                         <button 
@@ -297,7 +312,7 @@
                             <div class="section_8_box" data-index="{{ $index }}">
                                 <div class="section_8_image">
                                     <a href="#">
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" loading="lazy">
                                     </a>
                                 </div>
                                 <button 
@@ -325,7 +340,7 @@
         </div>
         <div class="section_about" id="tentang-kami">
             <div class="section_about_content">
-                <img src="images/logo_mandiri.webp" alt="">
+                <img src="images/logo_mandiri.webp" alt="" loading="lazy">
                 <h3>Tentang Kami</h3>
                 <span>CV. Mandiri Jaya Gemilang</span>
                 <p>Selamat datang di CV. Mandiri Jaya Gemilang, mitra terpercaya dalam penyediaan Plafon PVC, kontraktor & suplier. Kami berkomitmen menghadirkan solusi interior berkualitas tinggi untuk hunian dan bangunan komersial Anda.</p>
@@ -333,7 +348,7 @@
             </div>
             <div class="section_about_layout">
                 <div class="section_about_box">
-                    <img src="images/perusahaan.png" alt="">
+                    <img src="images/perusahaan.png" alt="" loading="lazy">
                     <div class="section_about_box_content">
                         <h5>Bidang Perusahaan</h5>
                         <p>Plafon PVC, List PVC, Ornamen PVC, 
@@ -341,21 +356,21 @@
                     </div>
                 </div>
                 <div class="section_about_box">
-                    <img src="images/terdaftar.png" alt="">
+                    <img src="images/terdaftar.png" alt="" loading="lazy">
                     <div class="section_about_box_content">
                         <h5>Tahun Terdaftar</h5>
                         <p>2017</p>
                     </div>
                 </div>
                 <div class="section_about_box">
-                    <img src="images/karyawan.png" alt="">
+                    <img src="images/karyawan.png" alt="" loading="lazy">
                     <div class="section_about_box_content">
                         <h5>Jumlah Karyawan</h5>
                         <p>72</p>
                     </div>
                 </div>
                 <div class="section_about_box">
-                    <img src="images/menjual.png" alt="">
+                    <img src="images/menjual.png" alt="" loading="lazy">
                     <div class="section_about_box_content">
                         <h5>Kami Menyediakan</h5>
                         <p>Plafon PVC - Kontraktor - Suplier</p>
@@ -391,7 +406,7 @@
                 </div>
             </div>
             <div class="section_visi_misi_image">
-                <img src="images/logo_blue_hd.webp" alt="">
+                <img src="images/logo_blue_hd.webp" alt="" loading="lazy">
             </div>
         </div>
         <div class="section_contact" id="hubungi">
@@ -408,7 +423,7 @@
                 @if($hotline)
                 <a href="https://api.whatsapp.com/send?phone={{ $hotline->name }}" target="_blank">
                     <div class="section_contact_whatsapp">
-                        <img src="images/hotline.svg" alt="">
+                        <img src="images/hotline.svg" alt="" loading="lazy">
                         <div class="section_contact_detail">
                             <p>Hubungi hotline service</br> pada tombol kontak</p>
                         </div>
@@ -416,7 +431,7 @@
                 </a>
                 @endif
                 <div class="section_contact_logo">
-                    <img src="images/logo.webp" alt="">
+                    <img src="images/logo.webp" alt="" loading="lazy">
                 </div>
             </div>
         </div>
@@ -428,17 +443,17 @@
             </div>
             <div class="section_promotion_layout">
                 <div class="section_promotion_box">
-                    <img src="images/promotion_1.png" alt="">
+                    <img src="images/promotion_1.png" alt="" loading="lazy">
                     <h2>Mitra Distributor</h2>
                     <p>Kami memudahkan anda untuk bergabung menjadi mitra distributor dengan layanan profesional dan terpercaya</p>
                 </div>
                 <div class="section_promotion_box">
-                    <img src="images/promotion_2.png" alt="">
+                    <img src="images/promotion_2.png" alt="" loading="lazy">
                     <h2>Jasa Desain</h2>
                     <p>Kami menyediakan jasa desain yg bertujuan untuk branding iklan dan kebutuhan iklan untuk menunjang penjualan</p>
                 </div>
                 <div class="section_promotion_box">
-                    <img src="images/promotion_3.png" alt="">
+                    <img src="images/promotion_3.png" alt="" loading="lazy">
                     <h2>Renovasi Rumah</h2>
                     <p>Perbaikan dan pembaruan struktural serta estetika sebuah rumah untuk menciptakan lingkungan yang lebih fungsional</p>
                 </div>
@@ -452,19 +467,19 @@
             <div class="section_promotion_layout section_promotion_layout_hasil">
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/modern_img.webp" alt="">
+                        <img src="images/modern_img.webp" alt="" loading="lazy">
                     </div>
                     <h1>Modern</h1>
                 </div>
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/minimalis_img.webp" alt="">
+                        <img src="images/minimalis_img.webp" alt="" loading="lazy">
                     </div>
                     <h1>Minimalis</h1>
                 </div>
                 <div class="section_hasil">
                     <div class="section_image">
-                        <img src="images/classic_img.webp" alt="">
+                        <img src="images/classic_img.webp" alt="" loading="lazy">
                     </div>
                     <h1>Classic</h1>
                 </div>
@@ -476,17 +491,17 @@
                     <h1>Kini Mandiri Jaya Gemilang telah menjangkau ke beberapa kota</h1>
                     <div class="section_cta_box_btn">
                         <a href="https://www.google.com/maps/search/?api=1&query=Mandiri+Jaya+Plafon+Cikupa" target="_blank"><button>Selengkapnya</button></a>
-                        <img src="images/logo_bintang.png" alt="">
+                        <img src="images/logo_bintang.png" alt="" loading="lazy">
                     </div>
                 </div>
-                <img src="images/cta_image.png" class="cta_image" alt="">
+                <img src="images/cta_image.png" class="cta_image" alt="" loading="lazy">
             </div>
         </div>
     </div>
     <div class="footer_layout">
         <div class="footer">
             <div class="logo_footer">
-                <img src="images/logo_mandiri_third.webp" alt="">
+                <img src="images/logo_mandiri_third.webp" alt="" loading="lazy">
             </div>
             <div class="office">
                 <h5>Head Office :</h5>
@@ -512,7 +527,7 @@
             <div class="contact_footer">
                 <a href="#">
                     <div class="section_contact_whatsapp">
-                        <img src="images/hotline.svg" alt="">
+                        <img src="images/hotline.svg" alt="" loading="lazy">
                         <div class="section_contact_detail">
                             <p>Hubungi hotline service</br> pada tombol kontak</p>
                         </div>
@@ -640,7 +655,7 @@
                     productBox.innerHTML = `
                         <div class="section_8_image">
                             <a href="#">
-                                <img src="{{ asset('storage') }}/${product.image}" alt="${product.name}">
+                                <img src="{{ asset('storage') }}/${product.image}" alt="${product.name}" loading="lazy">
                             </a>
                         </div>
                         <button 
